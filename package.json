@@ -2,7 +2,6 @@
   "name": "moveflix-client",
   "version": "1.0.0",
   "description": "the frontend client of my MoveFlix Web App",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
