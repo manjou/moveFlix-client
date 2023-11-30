@@ -27254,7 +27254,7 @@ const MainView = ()=>{
                 "Name": "Dystopian Crime",
                 "Description": "Dystopian crime films are set in a society characterized by human misery..."
             },
-            "ImagePath": "https://www.imdb.com/title/tt0066921/mediaviewer/rm1234567890?ref_=ttm...",
+            "ImagePath": "https://alternativemovieposters.com/wp-content/uploads/2018/02/liza_clockwork.jpg",
             "Featured": true,
             "Release": "1971",
             "Actors": [
@@ -27275,7 +27275,7 @@ const MainView = ()=>{
                 "Name": "War Drama",
                 "Description": "War drama films depict the effects of war on individuals and societies..."
             },
-            "ImagePath": "https://www.imdb.com/title/tt0361748/mediaviewer/rm1234567890?ref_=ttm...",
+            "ImagePath": "https://vignette4.wikia.nocookie.net/inglouriousbasterds/images/c/c3/Inglourious_Basterds_poster.jpg/revision/latest?cb=20131226131149",
             "Featured": true,
             "Release": "2009",
             "Actors": [
@@ -27317,7 +27317,7 @@ const MainView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "rMDaIgNH2Xjnu+ggUU34UA6NC/4=");
+_s(MainView, "/IDJAuoI3aoZk4VDbPu6BfdqBAo=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
