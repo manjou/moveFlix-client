@@ -27191,7 +27191,7 @@ const MainView = ()=>{
                 "Name": "Historical Drama",
                 "Description": "Historical drama films are set in the past and focus on historical events."
             },
-            "ImagePath": "https://www.imdb.com/title/tt0108052/mediaviewer/rm3260118016?ref_=ttm...",
+            "ImagePath": "https://flxt.tmsimg.com/assets/p15227_p_v13_be.jpg",
             "Featured": true,
             "Release": "1994",
             "Actors": [
@@ -27212,7 +27212,7 @@ const MainView = ()=>{
                 "Name": "Romance",
                 "Description": "Romance films are love stories that focus on passion, emotion, and the..."
             },
-            "ImagePath": "https://www.imdb.com/title/tt0120338/mediaviewer/rm1234567890?ref_=ttm...",
+            "ImagePath": "https://www.tvguide.com/a/img/catalog/provider/1/2/1-9050537522.jpg",
             "Featured": false,
             "Release": "1997",
             "Actors": [
@@ -27233,7 +27233,7 @@ const MainView = ()=>{
                 "Name": "Animation",
                 "Description": "Animation films involve the rapid display of a sequence of images to create..."
             },
-            "ImagePath": "https://www.imdb.com/title/tt0245429/mediaviewer/rm1234567890?ref_=ttm...",
+            "ImagePath": "https://www.bestmovieposters.co.uk/wp-content/uploads/2019/02/SPIRITED.jpg",
             "Featured": true,
             "Release": "2001",
             "Actors": [
@@ -27317,7 +27317,7 @@ const MainView = ()=>{
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "YOXO4bOb6+n8BJpsZjKJ9M+JeTw=");
+_s(MainView, "rMDaIgNH2Xjnu+ggUU34UA6NC/4=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");

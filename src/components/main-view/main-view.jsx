@@ -19,7 +19,7 @@ export const MainView = () => {
           "Name": "Historical Drama",
           "Description": "Historical drama films are set in the past and focus on historical events."
         },
-        "ImagePath": "https://www.imdb.com/title/tt0108052/mediaviewer/rm3260118016?ref_=ttm...",
+        "ImagePath": "https://flxt.tmsimg.com/assets/p15227_p_v13_be.jpg",
         "Featured": true,
         "Release": "1994",
         "Actors": ["Liam Neeson", "Ben Kingsley"]
@@ -37,7 +37,7 @@ export const MainView = () => {
           "Name": "Romance",
           "Description": "Romance films are love stories that focus on passion, emotion, and the..."
         },
-        "ImagePath": "https://www.imdb.com/title/tt0120338/mediaviewer/rm1234567890?ref_=ttm...",
+        "ImagePath": "https://www.tvguide.com/a/img/catalog/provider/1/2/1-9050537522.jpg",
         "Featured": false,
         "Release": "1997",
         "Actors": ["Leonardo DiCaprio", "Kate Winslet"]
@@ -55,7 +55,7 @@ export const MainView = () => {
           "Name": "Animation",
           "Description": "Animation films involve the rapid display of a sequence of images to create..."
         },
-        "ImagePath": "https://www.imdb.com/title/tt0245429/mediaviewer/rm1234567890?ref_=ttm...",
+        "ImagePath": "https://www.bestmovieposters.co.uk/wp-content/uploads/2019/02/SPIRITED.jpg",
         "Featured": true,
         "Release": "2001",
         "Actors": ["Rumi Hiiragi", "Miyu Irino"]
@@ -73,7 +73,7 @@ export const MainView = () => {
           "Name": "Dystopian Crime",
           "Description": "Dystopian crime films are set in a society characterized by human misery..."
         },
-        "ImagePath": "https://www.imdb.com/title/tt0066921/mediaviewer/rm1234567890?ref_=ttm...",
+        "ImagePath": "https://alternativemovieposters.com/wp-content/uploads/2018/02/liza_clockwork.jpg",
         "Featured": true,
         "Release": "1971",
         "Actors": ["Malcolm McDowell", "Patrick Magee"]
@@ -91,7 +91,7 @@ export const MainView = () => {
           "Name": "War Drama",
           "Description": "War drama films depict the effects of war on individuals and societies..."
         },
-        "ImagePath": "https://www.imdb.com/title/tt0361748/mediaviewer/rm1234567890?ref_=ttm...",
+        "ImagePath": "https://vignette4.wikia.nocookie.net/inglouriousbasterds/images/c/c3/Inglourious_Basterds_poster.jpg/revision/latest?cb=20131226131149",
         "Featured": true,
         "Release": "2009",
         "Actors": ["Brad Pitt", "Mélanie Laurent"]
