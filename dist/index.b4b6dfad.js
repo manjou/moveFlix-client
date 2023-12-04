@@ -27177,130 +27177,46 @@ var _movieView = require("../movie-view/movie-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
-    const [movies, setMovies] = (0, _react.useState)([
-        {
-            "_id": 1,
-            "Title": "Schindler's List",
-            "Description": "Schindler's List is a 1993 American epic historical drama film directed...",
-            "Director": {
-                "Name": "Steven Spielberg",
-                "Bio": "Steven Spielberg is an American film director, producer, and screenwriter.",
-                "Birth": "1946"
-            },
-            "Genre": {
-                "Name": "Historical Drama",
-                "Description": "Historical drama films are set in the past and focus on historical events."
-            },
-            "ImagePath": "https://flxt.tmsimg.com/assets/p15227_p_v13_be.jpg",
-            "Featured": true,
-            "Release": "1994",
-            "Actors": [
-                "Liam Neeson",
-                "Ben Kingsley"
-            ]
-        },
-        {
-            "_id": 2,
-            "Title": "Titanic",
-            "Description": "Titanic is a 1997 American epic romance and disaster film directed by...",
-            "Director": {
-                "Name": "James Cameron",
-                "Bio": "James Cameron is a Canadian film director, producer, and screenwriter.",
-                "Birth": "1954"
-            },
-            "Genre": {
-                "Name": "Romance",
-                "Description": "Romance films are love stories that focus on passion, emotion, and the..."
-            },
-            "ImagePath": "https://www.tvguide.com/a/img/catalog/provider/1/2/1-9050537522.jpg",
-            "Featured": false,
-            "Release": "1997",
-            "Actors": [
-                "Leonardo DiCaprio",
-                "Kate Winslet"
-            ]
-        },
-        {
-            "_id": 3,
-            "Title": "Spirited Away",
-            "Description": "Spirited Away is a 2001 Japanese animated fantasy film written and directed...",
-            "Director": {
-                "Name": "Hayao Miyazaki",
-                "Bio": "Hayao Miyazaki is a Japanese animator, director, and producer.",
-                "Birth": "1941"
-            },
-            "Genre": {
-                "Name": "Animation",
-                "Description": "Animation films involve the rapid display of a sequence of images to create..."
-            },
-            "ImagePath": "https://www.bestmovieposters.co.uk/wp-content/uploads/2019/02/SPIRITED.jpg",
-            "Featured": true,
-            "Release": "2001",
-            "Actors": [
-                "Rumi Hiiragi",
-                "Miyu Irino"
-            ]
-        },
-        {
-            "_id": 4,
-            "Title": "A Clockwork Orange",
-            "Description": "A Clockwork Orange is a 1971 dystopian crime film adapted, produced, and directed...",
-            "Director": {
-                "Name": "Stanley Kubrick",
-                "Bio": "Stanley Kubrick was an American film director, producer, and screenwriter.",
-                "Birth": "1928"
-            },
-            "Genre": {
-                "Name": "Dystopian Crime",
-                "Description": "Dystopian crime films are set in a society characterized by human misery..."
-            },
-            "ImagePath": "https://alternativemovieposters.com/wp-content/uploads/2018/02/liza_clockwork.jpg",
-            "Featured": true,
-            "Release": "1971",
-            "Actors": [
-                "Malcolm McDowell",
-                "Patrick Magee"
-            ]
-        },
-        {
-            "_id": 5,
-            "Title": "Inglourious Basterds",
-            "Description": "Inglourious Basterds is a 2009 alternate history war film written and...",
-            "Director": {
-                "Name": "Quentin Tarantino",
-                "Bio": "Quentin Tarantino is an American filmmaker and actor known for his nontraditional...",
-                "Birth": "1963"
-            },
-            "Genre": {
-                "Name": "War Drama",
-                "Description": "War drama films depict the effects of war on individuals and societies..."
-            },
-            "ImagePath": "https://vignette4.wikia.nocookie.net/inglouriousbasterds/images/c/c3/Inglourious_Basterds_poster.jpg/revision/latest?cb=20131226131149",
-            "Featured": true,
-            "Release": "2009",
-            "Actors": [
-                "Brad Pitt",
-                "M\xe9lanie Laurent"
-            ]
-        }
-    ]);
+    const [movies, setMovies] = (0, _react.useState)([]);
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    (0, _react.useEffect)(()=>{
+        fetch("https://myflix-api-qeb7.onrender.com/movies").then((response)=>response.json()).then((data)=>{
+            console.log(data);
+            const moviesFromApi = data.map((doc)=>{
+                console.log(data); // Log the document data
+                return {
+                    Title: doc.Title,
+                    Description: doc.Description,
+                    ImagePath: doc.ImagePath,
+                    Rating: doc.Rating,
+                    Director: doc.Director,
+                    Genre: doc.Genre,
+                    Release: doc.Release,
+                    Actors: doc.Actors
+                };
+            });
+            setMovies(moviesFromApi);
+        }).catch((err)=>{
+            console.error(err);
+        });
+    }, []);
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movie: selectedMovie,
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 105,
+        lineNumber: 41,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 110,
+        lineNumber: 46,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "MovieCardContainer",
         children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                 movie: movie,
                 onMovieClick: (newSelectedMovie)=>{
@@ -27308,16 +27224,16 @@ const MainView = ()=>{
                 }
             }, movie._id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 116,
+                lineNumber: 52,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 114,
+        lineNumber: 50,
         columnNumber: 5
     }, undefined);
 };
-_s(MainView, "/IDJAuoI3aoZk4VDbPu6BfdqBAo=");
+_s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
 _c = MainView;
 var _c;
 $RefreshReg$(_c, "MainView");
@@ -27343,8 +27259,33 @@ const MovieCard = ({ movie, onMovieClick })=>{
         onClick: ()=>{
             onMovieClick(movie);
         },
-        children: movie.Title
-    }, void 0, false, {
+        className: "MovieCard",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                src: movie.ImagePath,
+                alt: movie.Title,
+                className: "MoviecardImage"
+            }, void 0, false, {
+                fileName: "src/components/movie-card/movie-card.jsx",
+                lineNumber: 8,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                children: movie.Title
+            }, void 0, false, {
+                fileName: "src/components/movie-card/movie-card.jsx",
+                lineNumber: 9,
+                columnNumber: 7
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                children: movie.Rating
+            }, void 0, false, {
+                fileName: "src/components/movie-card/movie-card.jsx",
+                lineNumber: 10,
+                columnNumber: 7
+            }, undefined)
+        ]
+    }, void 0, true, {
         fileName: "src/components/movie-card/movie-card.jsx",
         lineNumber: 3,
         columnNumber: 5
@@ -27540,10 +27481,13 @@ parcelHelpers.export(exports, "MovieView", ()=>MovieView);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 const MovieView = ({ movie, onBackClick })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "MovieView",
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                    src: movie.ImagePath
+                    src: movie.ImagePath,
+                    alt: "{movie.Title}",
+                    className: "MovieViewImage"
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
                     lineNumber: 5,
@@ -27690,18 +27634,6 @@ const MovieView = ({ movie, onBackClick })=>{
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 26,
                         columnNumber: 15
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("br", {}, void 0, false, {
-                        fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 27,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                        children: movie.Genre.Description
-                    }, void 0, false, {
-                        fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 27,
-                        columnNumber: 15
                     }, undefined)
                 ]
             }, void 0, true, {
@@ -27715,20 +27647,20 @@ const MovieView = ({ movie, onBackClick })=>{
                         children: "Release: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 30,
+                        lineNumber: 29,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: movie.Release
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 31,
+                        lineNumber: 30,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 29,
+                lineNumber: 28,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27737,20 +27669,20 @@ const MovieView = ({ movie, onBackClick })=>{
                         children: "Actors: "
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 34,
+                        lineNumber: 33,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                         children: movie.actors
                     }, void 0, false, {
                         fileName: "src/components/movie-view/movie-view.jsx",
-                        lineNumber: 35,
+                        lineNumber: 34,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 33,
+                lineNumber: 32,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -27758,7 +27690,7 @@ const MovieView = ({ movie, onBackClick })=>{
                 children: "Back"
             }, void 0, false, {
                 fileName: "src/components/movie-view/movie-view.jsx",
-                lineNumber: 37,
+                lineNumber: 36,
                 columnNumber: 7
             }, undefined)
         ]

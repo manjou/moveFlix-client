@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "the frontend client of my MoveFlix Web App",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html"
   },
   "author": "Bernd Manjou Janzen",
   "license": "ISC",
