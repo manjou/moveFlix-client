@@ -60,3 +60,10 @@ export const MainView = () => {
     </div>
   );
 };
+
+MainView.prototype = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired
+  }).isRequired,
+  setMovies: PropTypes.func.isRequired
+};

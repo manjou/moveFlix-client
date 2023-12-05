@@ -27235,6 +27235,12 @@ const MainView = ()=>{
 };
 _s(MainView, "PO+XgOji7E32nFJj3H5UPLPJ7w4=");
 _c = MainView;
+MainView.prototype = {
+    movie: PropTypes.shape({
+        title: PropTypes.string.isRequired
+    }).isRequired,
+    setMovies: PropTypes.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "MainView");
 
@@ -27270,18 +27276,27 @@ const MovieCard = ({ movie, onMovieClick })=>{
                 lineNumber: 8,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                children: movie.Title
-            }, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "MovieCardInfo ",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
+                        children: movie.Title
+                    }, void 0, false, {
+                        fileName: "src/components/movie-card/movie-card.jsx",
+                        lineNumber: 10,
+                        columnNumber: 9
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        children: movie.Rating
+                    }, void 0, false, {
+                        fileName: "src/components/movie-card/movie-card.jsx",
+                        lineNumber: 11,
+                        columnNumber: 9
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/movie-card/movie-card.jsx",
                 lineNumber: 9,
-                columnNumber: 7
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
-                children: movie.Rating
-            }, void 0, false, {
-                fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 10,
                 columnNumber: 7
             }, undefined)
         ]
@@ -27292,6 +27307,12 @@ const MovieCard = ({ movie, onMovieClick })=>{
     }, undefined);
 };
 _c = MovieCard;
+MovieCard.propTypes = {
+    movie: PropTypes.shape({
+        title: PropTypes.string.isRequired
+    }).isRequired,
+    onMovieClick: PropTypes.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "MovieCard");
 
@@ -27701,6 +27722,21 @@ const MovieView = ({ movie, onBackClick })=>{
     }, undefined);
 };
 _c = MovieView;
+MovieView.propTypes = {
+    movie: PropType.shape({
+        Title: PropTypes.string.isRequired,
+        ImagePath: PropTypes.string.isRequired,
+        Description: PropTypes.string.isRequired,
+        Genre: PropTypes.shape({
+            GenreName: Prop.Types.string.isRequired
+        }),
+        Director: PropType.shape({
+            DirectorName: PropType.string.isRequired
+        }),
+        Featured: PropType.bool.isRequired
+    }).isRequired,
+    onBackClick: PropType.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "MovieView");
 

@@ -12,12 +12,33 @@ $color: steelblue;
 }
 
 .MoviecardImage {
-  width: 250px;
+  max-width: 100%;
 }
 
 .MovieCard {
+  width: 250px;
+  background-color: rgb(2, 2, 54);
   color: whitesmoke;
   margin: 1rem;
+}
+
+.MovieCardInfo {
+  display: flex;
+  background-color: rgb(5, 5, 70);
+  color: whitesmoke;
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.MovieCardInfo h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: rgb(127, 11, 11);
+}
+.MovieCardInfo h2 {
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 .MovieView {
@@ -27,9 +48,10 @@ $color: steelblue;
 
 .MovieViewImage {
   width: 300px;
+  max-height: 100%;
 }
 
 .MovieCardContainer {
   display: flex;
-  padding: 2rem;
+  flex-wrap: wrap;
 }

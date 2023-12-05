@@ -6,8 +6,18 @@ export const MovieCard = ({ movie, onMovieClick }) => {
       }}
     className="MovieCard" >
       <img src={movie.ImagePath} alt={movie.Title} className="MoviecardImage"/>
-      <h2>{movie.Title}</h2>
-      <h3>{movie.Rating}</h3>
+      <div className="MovieCardInfo ">
+        <h2>{movie.Title}</h2>
+        <h3>{movie.Rating}</h3>
+      </div>
+ 
     </div>
   );
+};
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string.isRequired
+  }).isRequired,
+  onMovieClick: PropTypes.func.isRequired
 };
