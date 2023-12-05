@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+// Here you import the PropTypes library
+import PropTypes from "prop-types";
 
 
 
