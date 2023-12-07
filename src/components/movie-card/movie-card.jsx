@@ -8,7 +8,7 @@ export const MovieCard = ({ movie, onMovieClick }) => {
         onMovieClick(movie);
       }}
     className="MovieCard" >
-      <img src={movie.ImagePath} alt={movie.Title} className="MoviecardImage"/>
+      <img src={movie.ImagePath} alt={`Image of ${movie.Title}`} className="MoviecardImage"/>
       <div className="MovieCardInfo ">
         <h2>{movie.Title}</h2>
         <h3>{movie.Rating}</h3>

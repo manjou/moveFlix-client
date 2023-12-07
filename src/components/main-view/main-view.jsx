@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import { LoginView } from "../login-view/login-view";
 // Here you import the PropTypes library
 import PropTypes from "prop-types";
 
@@ -8,8 +9,8 @@ import PropTypes from "prop-types";
 
 export const MainView = () => {
   const [movies, setMovies] = useState([]);
-
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     fetch("https://myflix-api-qeb7.onrender.com/movies")
@@ -38,18 +39,69 @@ export const MainView = () => {
       });
   }, []);
 
+  if (!user) {
+    return <LoginView onLoggedIn={(user) => setUser(user)} />;
+  }
+
+
+
   if (selectedMovie) {
+    let similarMovies = movies.filter(movie => movie.Genre.Name === selectedMovie.Genre.Name);
     return (
-      <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+      <>
+        <button
+          onClick={() => {
+            setUser(null);
+          }}
+        >
+          Logout
+        </button>
+        <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+        <hr />
+        <h2>Similar Movies</h2>
+        <div className="MovieCardContainer">
+          {similarMovies.map((movie) => {
+            return (
+              <MovieCard
+                key={movie._id}
+                movie={movie}
+                onMovieClick={(newSelectedMovie) => {
+                  setSelectedMovie(newSelectedMovie);
+                }}  
+              />   
+            );
+          })}
+        </div>
+    
+      </>
     );
   }
 
   if (movies.length === 0) {
-    return <div>The list is empty!</div>;
+    return (
+      <>
+        <button 
+          onClick={() => {
+            setUser(null);
+          }}
+        >
+          Logout
+        </button>
+        <div>The list is empty!</div>;
+      </>
+    )
   }
 
   return (
+    
     <div className="MovieCardContainer">
+      <button
+        onClick={() => {
+          setUser(null);
+        }}
+      >
+        Logout
+      </button>
       {movies.map((movie) => (
         <MovieCard
           key={movie._id}
