@@ -4,6 +4,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 // Here you import the PropTypes library
 import PropTypes from "prop-types";
+import { SignupView } from "../signup-view/signup-view";
 
 
 
@@ -51,11 +52,15 @@ export const MainView = () => {
 
   if (!user) {
     return (
-      <LoginView onLoggedIn={(user, token) => {
+      <>
+        <LoginView onLoggedIn={(user, token) => {
         setUser(user);
         setToken(token);
         }}
-      />
+        />
+        or
+        <SignupView />
+      </>
     );
   }
 
