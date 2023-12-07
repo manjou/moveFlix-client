@@ -8,12 +8,22 @@ import PropTypes from "prop-types";
 
 
 export const MainView = () => {
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);  
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [user, setUser] = useState(null);
+
 
   useEffect(() => {
-    fetch("https://myflix-api-qeb7.onrender.com/movies")
+    if (!token) {
+      return;
+    }
+
+    fetch("https://myflix-api-qeb7.onrender.com/movies", {
+      headers: { Authorization: `Bearer ${token}`}
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
@@ -30,7 +40,7 @@ export const MainView = () => {
             Release: doc.Release,
             Actors: doc.Actors
           };
-        });
+        }, [token]);
   
         setMovies(moviesFromApi);
       })
@@ -40,7 +50,13 @@ export const MainView = () => {
   }, []);
 
   if (!user) {
-    return <LoginView onLoggedIn={(user) => setUser(user)} />;
+    return (
+      <LoginView onLoggedIn={(user, token) => {
+        setUser(user);
+        setToken(token);
+        }}
+      />
+    );
   }
 
 
@@ -52,6 +68,8 @@ export const MainView = () => {
         <button
           onClick={() => {
             setUser(null);
+            setToken(null);
+            localStorage.clear();
           }}
         >
           Logout
@@ -83,6 +101,8 @@ export const MainView = () => {
         <button 
           onClick={() => {
             setUser(null);
+            setToken(null);
+            localStorage.clear();
           }}
         >
           Logout
@@ -98,6 +118,8 @@ export const MainView = () => {
       <button
         onClick={() => {
           setUser(null);
+          setToken(null);
+          localStorage.clear();
         }}
       >
         Logout
