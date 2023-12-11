@@ -1,3 +1,5 @@
+import './movie-view.scss';
+
 // Here you import the PropTypes library
 import PropTypes from "prop-types";
 
@@ -36,7 +38,7 @@ export const MovieView = ({ movie, onBackClick }) => {
         <span>Actors: </span>
         <span>{movie.actors}</span>
       </div>
-      <button onClick={onBackClick}>Back</button>
+      <button onClick={onBackClick} className="back-button">Back</button>
     </div>
   );
 };

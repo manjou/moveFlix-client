@@ -1,3 +1,5 @@
+import "./signup-view.scss";
+
 import {useState} from "react";
 
 export const SignupView = () => {
@@ -16,6 +18,7 @@ export const SignupView = () => {
       BirthDay: birthday
     };
 
+
     fetch("https://myflix-api-qeb7.onrender.com/users/", {
       method: "POST",
       body: JSON.stringify(data),
@@ -27,7 +30,7 @@ export const SignupView = () => {
         alert("Signup successful");
         window.location.reload();
       } else {
-        alert("Signup failed");
+        alert("Signup failed: ");
       }
     });
   };

@@ -1,3 +1,9 @@
+
+
+@import '~bootstrap/scss/bootstrap.scss';
+@import './custom.scss';
+
+
 :root {
   --primary-color: #1B2A41; // oxford blue
   --secondary-color: #95190C; //penred
@@ -21,7 +27,7 @@ h2 {
 
 
 .my-flix {
-  color: var(--primary-color)
+  color: var(--primary-color);
 }
 
 .MoviecardImage {
@@ -54,22 +60,7 @@ h2 {
   font-weight: 400;
 }
 
-.MovieView {
 
-  background-color: grey;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  color: var(--white-color);
-}
-
-.MovieViewImage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 400px;
-  max-height: 100%;
-}
 
 .MovieCardContainer {
   display: flex;

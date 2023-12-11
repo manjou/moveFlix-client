@@ -1,3 +1,5 @@
+import "./movie-card.scss";
+
 // Here you import the PropTypes library
 import PropTypes from "prop-types";
 
