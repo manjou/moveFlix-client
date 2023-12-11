@@ -1,18 +1,27 @@
+:root {
+  --primary-color: #1B2A41; // oxford blue
+  --secondary-color: #95190C; //penred
+  --richblack-color: #0C1821;
+  --white-color: #FEFCFB;
+  --charcoal-color: #40434E; 
+}
+
+
+
 body {
   box-sizing: border-box;
   margin: 0;
-  background-color: #141414;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: var(--richblack-color);
+  font-family: 'Roboto', sans-serif;
 }
 
 h2 {
-  color: whitesmoke;
+  color: var(--white-color);
 }
 
-$color: steelblue;
 
 .my-flix {
-  color: $color;
+  color: var(--primary-color)
 }
 
 .MoviecardImage {
@@ -21,15 +30,15 @@ $color: steelblue;
 
 .MovieCard {
   width: 250px;
-  background-color: rgb(2, 2, 54);
-  color: whitesmoke;
+  background-color: var(--primary-color);
+  color: var(--white-color);
   margin: 1rem;
 }
 
 .MovieCardInfo {
   display: flex;
   background-color: rgb(5, 5, 70);
-  color: whitesmoke;
+  color: var(--white-color);
   padding: 1rem;
   align-items: center;
   justify-content: space-between;
@@ -38,7 +47,7 @@ $color: steelblue;
 .MovieCardInfo h3 {
   margin: 0;
   font-size: 1rem;
-  color: rgb(127, 11, 11);
+  color: var(--secondary-color);
 }
 .MovieCardInfo h2 {
   font-size: 1rem;
@@ -51,7 +60,7 @@ $color: steelblue;
   display: flex;
   flex-direction: column;
   align-items: left;
-  color: whitesmoke;
+  color: var(--white-color);
 }
 
 .MovieViewImage {
@@ -68,5 +77,5 @@ $color: steelblue;
 }
 
 form {
-  color: whitesmoke;
+  color: var(--white-color);
 }

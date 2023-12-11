@@ -9,8 +9,8 @@ export const LoginView = ({ onLoggedIn }) => {
     event.preventDefault();
 
       const data = {
-        access: username,
-        secret: password
+        Username: username,
+        Password: password
       };
 
       fetch("https://myflix-api-qeb7.onrender.com/login", {
@@ -22,7 +22,8 @@ export const LoginView = ({ onLoggedIn }) => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("Login response: ", data);
+          console.log(data);
+          // console.log("Login response: ", data);
           if (data.user) {
             localStorage.setItem("user", JSON.stringify(data.user));
             localStorage.setItem("token", data.token);
@@ -32,7 +33,7 @@ export const LoginView = ({ onLoggedIn }) => {
           }
         })
         .catch((e) => {
-          alert("Something went wronf");
+          alert("Something went wrong");
         });
   };
 

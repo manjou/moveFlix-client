@@ -1,16 +1,24 @@
+:root {
+  --primary-color: #1b2a41;
+  --secondary-color: #95190c;
+  --richblack-color: #0c1821;
+  --white-color: #fefcfb;
+  --charcoal-color: #40434e;
+}
+
 body {
   box-sizing: border-box;
-  background-color: #141414;
+  background-color: var(--richblack-color);
   margin: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 h2 {
-  color: #f5f5f5;
+  color: var(--white-color);
 }
 
 .my-flix {
-  color: #4682b4;
+  color: var(--primary-color);
 }
 
 .MoviecardImage {
@@ -18,14 +26,14 @@ h2 {
 }
 
 .MovieCard {
-  color: #f5f5f5;
-  background-color: #020236;
+  background-color: var(--primary-color);
+  color: var(--white-color);
   width: 250px;
   margin: 1rem;
 }
 
 .MovieCardInfo {
-  color: #f5f5f5;
+  color: var(--white-color);
   background-color: #050546;
   justify-content: space-between;
   align-items: center;
@@ -34,7 +42,7 @@ h2 {
 }
 
 .MovieCardInfo h3 {
-  color: #7f0b0b;
+  color: var(--secondary-color);
   margin: 0;
   font-size: 1rem;
 }
@@ -46,7 +54,7 @@ h2 {
 
 .MovieView {
   align-items: left;
-  color: #f5f5f5;
+  color: var(--white-color);
   background-color: gray;
   flex-direction: column;
   display: flex;
@@ -66,7 +74,7 @@ h2 {
 }
 
 form {
-  color: #f5f5f5;
+  color: var(--white-color);
 }
 
 /*# sourceMappingURL=index.ce1d6491.css.map */
