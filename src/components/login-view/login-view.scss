@@ -1,5 +1,18 @@
 @import "../../index.scss";
 
 body {
-  background-color: var(--richblack-color);
+  background-color: var(--charcoal-color);
+}
+
+#Login-Card {
+  background-color: var(--primary-color);
+}
+
+#Login-Title {
+  color: var(--white-color);
+}
+
+Button.Custom-Button {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
 }

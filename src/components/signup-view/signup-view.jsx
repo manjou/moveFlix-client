@@ -3,6 +3,9 @@ import "./signup-view.scss";
 import {useState} from "react";
 import { Form, Button, Card, CardGroup, Container, Col, Row } from "react-bootstrap";
 
+const cardStyle = {
+  backgroundColor: 'var(--primary-color)'
+};
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
@@ -42,11 +45,11 @@ export const SignupView = () => {
       <Row> 
         <Col>
           <CardGroup>
-            <Card>
+            <Card style={cardStyle}>
               <Card.Body>
-              <Card.Title>Please Register</Card.Title>
+              <Card.Title id="Signup-Card-Title" className="mb-3">Please Register</Card.Title>
               <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="signUpFormUsername">
+                <Form.Group controlId="signUpFormUsername" className="mb-3">
                   <Form.Label>Username:</Form.Label>
                   <Form.Control
                     type="text"
@@ -57,7 +60,7 @@ export const SignupView = () => {
                     placeholder="Enter a username"
                   />
                 </Form.Group>
-                <Form.Group controlId="signUpFormPassword">
+                <Form.Group controlId="signUpFormPassword" className="mb-3">
                   <Form.Label>Password:</Form.Label>
                   <Form.Control
                     type="password"
@@ -67,7 +70,7 @@ export const SignupView = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Form.Group>
-                <Form.Group controlId="signUpFormEmail">
+                <Form.Group controlId="signUpFormEmail" className="mb-3">
                   <Form.Label>Email:</Form.Label>
                   <Form.Control
                     type="email"
@@ -76,7 +79,7 @@ export const SignupView = () => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </Form.Group>
-                <Form.Group controlId="signUpFormBirthDay">
+                <Form.Group controlId="signUpFormBirthDay" className="mb-3">
                   <Form.Label>Birthday:</Form.Label>
                   <Form.Control
                     type="date"
@@ -84,8 +87,8 @@ export const SignupView = () => {
                     onChange={(e) => setBirthday(e.target.value)} 
                   />
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                  Submit
+                <Button variant="primary" type="submit" className="Custom-Button">
+                  Sign Up
                 </Button>
               </Form>
               </Card.Body>

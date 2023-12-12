@@ -1,2 +1,21 @@
 
 @import "../../index.scss";
+
+#Signup-Card {
+  background-color: var(--primary-color);
+  opacity: 50%;
+}
+
+#Signup-Card-Title {
+  color: var(--white-color);
+}
+
+Button.Custom-Button {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  width: 150px;
+}
+
+Button.Custom-Button :hover {
+  background-color: var(--secondary-color-light);
+}

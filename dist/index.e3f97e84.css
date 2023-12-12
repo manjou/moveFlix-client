@@ -13210,6 +13210,15 @@ textarea.form-control-lg {
   --charcoal-color: #40434e;
 }
 
+:root {
+  --primary-color: #1b2a41;
+  --secondary-color: #95190c;
+  --secondary-color-light: #ec5847;
+  --richblack-color: #0c1821;
+  --white-color: #fefcfb;
+  --charcoal-color: #40434e;
+}
+
 body {
   box-sizing: border-box;
   background-color: var(--richblack-color);
@@ -13233,14 +13242,12 @@ form {
   max-width: 100%;
 }
 
-.MovieCard {
+.Movie-Card {
   background-color: var(--primary-color);
   color: var(--white-color);
-  width: 250px;
-  margin: 1rem;
 }
 
-.MovieCardInfo {
+Card.MovieCardInfo {
   color: var(--white-color);
   background-color: #050546;
   justify-content: space-between;
@@ -26472,6 +26479,15 @@ textarea.form-control-lg {
 :root {
   --primary-color: #1b2a41;
   --secondary-color: #95190c;
+  --richblack-color: #0c1821;
+  --white-color: #fefcfb;
+  --charcoal-color: #40434e;
+}
+
+:root {
+  --primary-color: #1b2a41;
+  --secondary-color: #95190c;
+  --secondary-color-light: #ec5847;
   --richblack-color: #0c1821;
   --white-color: #fefcfb;
   --charcoal-color: #40434e;
@@ -39734,6 +39750,15 @@ textarea.form-control-lg {
   --charcoal-color: #40434e;
 }
 
+:root {
+  --primary-color: #1b2a41;
+  --secondary-color: #95190c;
+  --secondary-color-light: #ec5847;
+  --richblack-color: #0c1821;
+  --white-color: #fefcfb;
+  --charcoal-color: #40434e;
+}
+
 body {
   box-sizing: border-box;
   background-color: var(--richblack-color);
@@ -39754,7 +39779,20 @@ form {
 }
 
 body {
-  background-color: var(--richblack-color);
+  background-color: var(--charcoal-color);
+}
+
+#Login-Card {
+  background-color: var(--primary-color);
+}
+
+#Login-Title {
+  color: var(--white-color);
+}
+
+Button.Custom-Button {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
 }
 
 :root, [data-bs-theme="light"] {
@@ -52969,6 +53007,15 @@ textarea.form-control-lg {
   --charcoal-color: #40434e;
 }
 
+:root {
+  --primary-color: #1b2a41;
+  --secondary-color: #95190c;
+  --secondary-color-light: #ec5847;
+  --richblack-color: #0c1821;
+  --white-color: #fefcfb;
+  --charcoal-color: #40434e;
+}
+
 body {
   box-sizing: border-box;
   background-color: var(--richblack-color);
@@ -52986,6 +53033,25 @@ h2, .h2 {
 
 form {
   color: var(--white-color);
+}
+
+#Signup-Card {
+  background-color: var(--primary-color);
+  opacity: .5;
+}
+
+#Signup-Card-Title {
+  color: var(--white-color);
+}
+
+Button.Custom-Button {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  width: 150px;
+}
+
+Button.Custom-Button :hover {
+  background-color: var(--secondary-color-light);
 }
 
 :root, [data-bs-theme="light"] {
@@ -66195,6 +66261,15 @@ textarea.form-control-lg {
 :root {
   --primary-color: #1b2a41;
   --secondary-color: #95190c;
+  --richblack-color: #0c1821;
+  --white-color: #fefcfb;
+  --charcoal-color: #40434e;
+}
+
+:root {
+  --primary-color: #1b2a41;
+  --secondary-color: #95190c;
+  --secondary-color-light: #ec5847;
   --richblack-color: #0c1821;
   --white-color: #fefcfb;
   --charcoal-color: #40434e;

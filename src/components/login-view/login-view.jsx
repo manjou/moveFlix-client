@@ -1,7 +1,13 @@
 import "./login-view.scss";
 
 import { useState } from "react";
-import { Form, Button, Card, CardGroup, Container, Col, Row } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import CardGroup from "react-bootstrap/CardGroup";
+import Container from "react-bootstrap/Container";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 export const LoginView = ({ onLoggedIn }) => {
   const [username, setUsername] = useState("");
@@ -45,11 +51,11 @@ export const LoginView = ({ onLoggedIn }) => {
       <Row>
         <Col>
           <CardGroup>
-            <Card>
+            <Card id="Login-Card">
               <Card.Body>
-                <Card.Title>Please Login</Card.Title>
+                <Card.Title id="Login-Title" className="mb-3">Please Login</Card.Title>
                   <Form onSubmit={handleSubmit}>
-                    <Form.Group controlId="formUsername">
+                    <Form.Group controlId="formUsername" className="mb-3">
                       <Form.Label>Username:</Form.Label>
                       <Form.Control
                         type="text"
@@ -59,7 +65,7 @@ export const LoginView = ({ onLoggedIn }) => {
                         minLength="3"
                       />
                     </Form.Group>
-                    <Form.Group controlId="formPassword">
+                    <Form.Group controlId="formPassword" className="mb-3">
                       <Form.Label>Password:</Form.Label>
                       <Form.Control
                         type="password"
@@ -69,7 +75,9 @@ export const LoginView = ({ onLoggedIn }) => {
                       />
                     </Form.Group>
 
-                    <Button variant="primary" type="submit">Submit</Button>
+                    <Button variant="primary" type="submit" className="Custom-Button">
+                      Login
+                    </Button>
                   </Form>
               </Card.Body>
             </Card>

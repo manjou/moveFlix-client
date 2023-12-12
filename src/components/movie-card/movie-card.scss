@@ -4,14 +4,12 @@
   max-width: 100%;
 }
 
-.MovieCard {
-  width: 250px;
+.Movie-Card {
   background-color: var(--primary-color);
   color: var(--white-color);
-  margin: 1rem;
 }
 
-.MovieCardInfo {
+Card.MovieCardInfo {
   display: flex;
   background-color: rgb(5, 5, 70);
   color: var(--white-color);
