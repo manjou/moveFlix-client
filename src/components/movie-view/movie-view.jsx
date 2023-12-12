@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 
 export const MovieView = ({ movie, onBackClick }) => {
   return (
-    <div className="MovieView">
+    <div>
       <div>
-        <img src={movie.ImagePath} alt="{movie.Title}" className="MovieViewImage" />
+        <img src={movie.ImagePath} alt="{movie.Title}" className="MovieViewImage w-100" />
       </div>
       <div>
         <span>Title: </span>

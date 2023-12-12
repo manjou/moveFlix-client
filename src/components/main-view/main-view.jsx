@@ -6,6 +6,7 @@ import { LoginView } from "../login-view/login-view";
 import PropTypes from "prop-types";
 import { SignupView } from "../signup-view/signup-view";
 import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 
 
@@ -51,56 +52,72 @@ export const MainView = () => {
       });
   }, [token]);
 
+  let similarMovies = selectedMovie ? movies.filter(movie => movie.Genre.Name === selectedMovie.Genre.Name) : [];
+
 
   return (
-    <Row>
+    <Row className="justify-content-md-center">
       {!user ? (
-        <>
+        <Col md={5}>
           <LoginView onLoggedIn={(user) => {
              setUser(user);
              setToken(localStorage.getItem('token'));
           }} />
           or
           <SignupView />
-        </>
+        </Col>
       ) : selectedMovie ? (
         <>
-          <MovieView 
+        <button
+          onClick={() => {
+            setUser(null);
+            setToken(null);
+            localStorage.clear();
+          }}
+        >
+          Logout
+        </button>
+        <Col md={8}>
+         <MovieView
             movie={selectedMovie} 
             onBackClick={() => setSelectedMovie(null)} 
           />
+        </Col>
+         
           <hr />
           <h2>Similar Movies</h2>
-          <p>filter(movie => movie.Genre.Name === selectedMovie.Genre.Name)</p>
-          <div className="MovieCardContainer">
-            {movies.map((movie) => (
-              <MovieCard
-                key={movie._id}
-                movie={movie}
-                onMovieClick={(newSelectedMovie) => {
-                  setSelectedMovie(newSelectedMovie);
-                }}  
-              />   
+          <>   
+            {similarMovies.map((movie) => (
+              <Col className="mb-5" key={movie._id} md={3}>
+                <MovieCard
+                  movie={movie}
+                  onMovieClick={(newSelectedMovie) => {
+                    setSelectedMovie(newSelectedMovie);
+                    }}  
+                />
+              </Col>
             ))}
-          </div>
+          </>
         </>
       ) : movies.length === 0 ? (
         <div>The list is empty!</div>
       ) : (
         <>
           {movies.map((movie) => (
-            <MovieCard
-              key={movie._id}
-              movie={movie}
-              onMovieClick={(newSelectedMovie) => {
+            <Col className="mb-5" key={movie._id} md={4} xs={6}>
+              <MovieCard
+                movie={movie}
+                onMovieClick={(newSelectedMovie) => {
                 setSelectedMovie(newSelectedMovie);
-              }}
-            />
+                }}
+              />
+            </Col>
           ))}
         </>
       )}
     </Row>
   );
+  }
 
   MainView.propTypes = {
     movie: PropTypes.shape({
@@ -108,7 +125,7 @@ export const MainView = () => {
     }).isRequired,
     setMovies: PropTypes.func.isRequired
   };
-}
+
 
 
 
@@ -201,6 +218,3 @@ export const MainView = () => {
   //       />
   //     ))}
   //   </div>
-
-
-

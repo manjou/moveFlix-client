@@ -13225,6 +13225,10 @@ h2, .h2 {
   color: var(--primary-color);
 }
 
+form {
+  color: var(--white-color);
+}
+
 .MoviecardImage {
   max-width: 100%;
 }
@@ -13259,10 +13263,6 @@ h2, .h2 {
 .MovieCardContainer {
   flex-wrap: wrap;
   display: flex;
-}
-
-form {
-  color: var(--white-color);
 }
 
 :root, [data-bs-theme="light"] {
@@ -26492,51 +26492,17 @@ h2, .h2 {
   color: var(--primary-color);
 }
 
-.MoviecardImage {
-  max-width: 100%;
-}
-
-.MovieCard {
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  width: 250px;
-  margin: 1rem;
-}
-
-.MovieCardInfo {
-  color: var(--white-color);
-  background-color: #050546;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  display: flex;
-}
-
-.MovieCardInfo h3, .MovieCardInfo .h3 {
-  color: var(--secondary-color);
-  margin: 0;
-  font-size: 1rem;
-}
-
-.MovieCardInfo h2, .MovieCardInfo .h2 {
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-.MovieCardContainer {
-  flex-wrap: wrap;
-  display: flex;
-}
-
 form {
   color: var(--white-color);
 }
 
 .back-button {
   color: #f5f5f5;
-  background-color: var(--charcoal-color);
+  background-color: var(--primary-color);
+  cursor: pointer;
   border: none;
   border-radius: 4px;
+  width: 70px;
   padding: 4px 12px;
 }
 
@@ -26551,7 +26517,7 @@ form {
 .MovieViewImage {
   flex-direction: column;
   align-items: center;
-  width: 400px;
+  width: 100%;
   max-height: 100%;
   display: flex;
 }
@@ -39781,42 +39747,6 @@ h2, .h2 {
 
 .my-flix {
   color: var(--primary-color);
-}
-
-.MoviecardImage {
-  max-width: 100%;
-}
-
-.MovieCard {
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  width: 250px;
-  margin: 1rem;
-}
-
-.MovieCardInfo {
-  color: var(--white-color);
-  background-color: #050546;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  display: flex;
-}
-
-.MovieCardInfo h3, .MovieCardInfo .h3 {
-  color: var(--secondary-color);
-  margin: 0;
-  font-size: 1rem;
-}
-
-.MovieCardInfo h2, .MovieCardInfo .h2 {
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-.MovieCardContainer {
-  flex-wrap: wrap;
-  display: flex;
 }
 
 form {
@@ -53054,42 +52984,6 @@ h2, .h2 {
   color: var(--primary-color);
 }
 
-.MoviecardImage {
-  max-width: 100%;
-}
-
-.MovieCard {
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  width: 250px;
-  margin: 1rem;
-}
-
-.MovieCardInfo {
-  color: var(--white-color);
-  background-color: #050546;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  display: flex;
-}
-
-.MovieCardInfo h3, .MovieCardInfo .h3 {
-  color: var(--secondary-color);
-  margin: 0;
-  font-size: 1rem;
-}
-
-.MovieCardInfo h2, .MovieCardInfo .h2 {
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-.MovieCardContainer {
-  flex-wrap: wrap;
-  display: flex;
-}
-
 form {
   color: var(--white-color);
 }
@@ -66319,42 +66213,6 @@ h2, .h2 {
 
 .my-flix {
   color: var(--primary-color);
-}
-
-.MoviecardImage {
-  max-width: 100%;
-}
-
-.MovieCard {
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  width: 250px;
-  margin: 1rem;
-}
-
-.MovieCardInfo {
-  color: var(--white-color);
-  background-color: #050546;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  display: flex;
-}
-
-.MovieCardInfo h3, .MovieCardInfo .h3 {
-  color: var(--secondary-color);
-  margin: 0;
-  font-size: 1rem;
-}
-
-.MovieCardInfo h2, .MovieCardInfo .h2 {
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-.MovieCardContainer {
-  flex-wrap: wrap;
-  display: flex;
 }
 
 form {
