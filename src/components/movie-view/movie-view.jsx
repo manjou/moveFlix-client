@@ -1,45 +1,50 @@
 import './movie-view.scss';
+import Button from "react-bootstrap/Button";
 
 // Here you import the PropTypes library
 import PropTypes from "prop-types";
 
 export const MovieView = ({ movie, onBackClick }) => {
   return (
-    <div>
-      <div>
+    <div className="row py-4 MovieView">
+      <div className="col-md-7">
         <img src={movie.ImagePath} alt="{movie.Title}" className="MovieViewImage w-100" />
       </div>
-      <div>
-        <span>Title: </span>
-        <span>{movie.Title}</span>
-      </div>
-      <div>
-        <span>Description: </span>
-        <span>{movie.Description}</span>
-      </div>
-      <div>
-        <span>Director: </span>
-        <br /><span>Name: </span>
-        <span>{movie.Director.Name}</span>
-        <br /><span>Bio: </span>
-        <span>{movie.Director.Bio}</span>
-        <br /><span>Birth: </span>
-        <span>{movie.Director.Birth}</span>
-      </div>
-      <div>
-        <span>Genre:</span>
-        <br /><span>{movie.Genre.Name}</span>
-      </div>
-      <div>
-        <span>Release: </span>
-        <span>{movie.Release}</span>  
-      </div>
-      <div>
-        <span>Actors: </span>
-        <span>{movie.actors}</span>
-      </div>
-      <button onClick={onBackClick} className="back-button">Back</button>
+      <div className="col-md-5 MovieView">
+        <ul className="list-group mb-4">
+          <li className="list-group-item">
+            <span>{movie.Title}</span>
+          </li>
+          <li className="list-group-item">
+            <span>{movie.Description}</span>
+          </li>
+          <li className="list-group-item">
+            <span>Director: </span>
+            <br />
+            <span>{movie.Director.Name}</span>
+            <br /><span>Bio: </span>
+            <span>{movie.Director.Bio}</span>
+            <br /><span>Birth: </span>
+            <span>{movie.Director.Birth}</span>
+          </li>
+          <li className="list-group-item">
+            <span>Genre:</span>
+            <br /><span>{movie.Genre.Name}</span>
+          </li>
+          <li className="list-group-item">
+            <span>Release: </span>
+            <span>{movie.Release}</span>  
+          </li>
+          <li className="list-group-item">
+            <span>Actors: </span>
+            <br />
+            <span>{movie.Actors.join(", ")}</span>
+          </li>
+        </ul>
+        <Button onClick={onBackClick} variant='dark'>Back</Button>
     </div>
+  </div>
+    
   );
 };
 

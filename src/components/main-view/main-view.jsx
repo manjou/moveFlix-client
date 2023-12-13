@@ -7,8 +7,8 @@ import PropTypes from "prop-types";
 import { SignupView } from "../signup-view/signup-view";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
-
+import Button from "react-bootstrap/Button";
+import "./main-view.scss";
 
 export const MainView = () => {
   const [user, setUser] = useState(localStorage.getItem("user"));
@@ -68,15 +68,19 @@ export const MainView = () => {
         </Col>
       ) : selectedMovie ? (
         <>
-        <button
-          onClick={() => {
-            setUser(null);
-            setToken(null);
-            localStorage.clear();
-          }}
-        >
-          Logout
-        </button>
+        <Col md={2}>
+          <Button
+            onClick={() => {
+              setUser(null);
+              setToken(null);
+              localStorage.clear();
+            }}
+            variant="dark"
+          >
+            Logout
+          </Button>
+        </Col>
+       
         <Col md={8}>
          <MovieView
             movie={selectedMovie} 
