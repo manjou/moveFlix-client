@@ -2946,7 +2946,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _client = require("react-dom/client");
 var _mainView = require("./components/main-view/main-view");
-var _bootstrapMinCss = require("bootstrap/dist/css/bootstrap.min.css");
+// import "bootstrap/dist/css/bootstrap.min.css";
 var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
 // Import statement to indicate that you need to bundle `./indes.scss``
@@ -2984,7 +2984,7 @@ $RefreshReg$(_c, "MoveFlixApplication");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8UQik","bootstrap/dist/css/bootstrap.min.css":"i5LP7","react-bootstrap/Container":"hEdsw","@parcel/transformer-js/src/esmodule-helpers.js":"8Xdoo","./custom.scss":"JNZNg"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8UQik","react-bootstrap/Container":"hEdsw","@parcel/transformer-js/src/esmodule-helpers.js":"8Xdoo","./custom.scss":"JNZNg"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -31500,6 +31500,6 @@ $RefreshReg$(_c, "SignupView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"8Xdoo","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8UQik","./signup-view.scss":"6Z19M","react-bootstrap":"3AD9A"}],"6Z19M":[function() {},{}],"lJZlQ":[function() {},{}],"i5LP7":[function() {},{}],"JNZNg":[function() {},{}]},["2ggho","d00NM","d8Dch"], "d8Dch", "parcelRequire728f")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"8Xdoo","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"8UQik","./signup-view.scss":"6Z19M","react-bootstrap":"3AD9A"}],"6Z19M":[function() {},{}],"lJZlQ":[function() {},{}],"JNZNg":[function() {},{}]},["2ggho","d00NM","d8Dch"], "d8Dch", "parcelRequire728f")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
