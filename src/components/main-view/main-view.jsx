@@ -83,12 +83,13 @@ export const MainView = () => {
             onBackClick={() => setSelectedMovie(null)} 
           />
         </Col>
-         
-          <hr />
-          <h2>Similar Movies</h2>
+        
+        <h2><hr></hr></h2>
+        
+        <h2>Similar Movies</h2>
           <>   
             {similarMovies.map((movie) => (
-              <Col className="mb-5" key={movie._id} md={3}>
+              <Col className="mb-4" key={movie._id} md={3}>
                 <MovieCard
                   movie={movie}
                   onMovieClick={(newSelectedMovie) => {
@@ -104,7 +105,7 @@ export const MainView = () => {
       ) : (
         <>
           {movies.map((movie) => (
-            <Col className="mb-5" key={movie._id} md={4} xs={6}>
+            <Col className="mb-4" key={movie._id} md={4} xs={6}>
               <MovieCard
                 movie={movie}
                 onMovieClick={(newSelectedMovie) => {

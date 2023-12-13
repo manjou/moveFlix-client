@@ -9,28 +9,13 @@ export const MovieCard = ({ movie, onMovieClick }) => {
     <Card onClick={() => {
       onMovieClick(movie);
     }}
-    className="h-100 Movie-Card">
+    className="h-100" id="Movie-Card">
       <Card.Img variant="top" src={movie.ImagePath}  alt={`Image of ${movie.Title}`} className="MoviecardImage"/>
-      <Card.Body>
+      <Card.Body id="Movie-Card-Info">
         <Card.Text>{movie.Title}</Card.Text>
         <Card.Text>{movie.Rating}</Card.Text>
       </Card.Body>
     </Card>
-
-
-
-    // <div 
-    //   onClick={() => {
-    //     onMovieClick(movie);
-    //   }}
-    // className="MovieCard" >
-    //   <img src={movie.ImagePath} alt={`Image of ${movie.Title}`} className="MoviecardImage"/>
-    //   <div className="MovieCardInfo ">
-    //     <h2>{movie.Title}</h2>
-    //     <h3>{movie.Rating}</h3>
-    //   </div>
- 
-    // </div>
   );
 };
 

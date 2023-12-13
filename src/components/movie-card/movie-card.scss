@@ -4,14 +4,15 @@
   max-width: 100%;
 }
 
-.Movie-Card {
+#Movie-Card {
   background-color: var(--primary-color);
   color: var(--white-color);
+  box-shadow: 3px 3px 5px var(--charcoal-color);
 }
 
-Card.MovieCardInfo {
+#MovieCardInfo {
   display: flex;
-  background-color: rgb(5, 5, 70);
+  background-color: var(--primary-color);
   color: var(--white-color);
   padding: 1rem;
   align-items: center;

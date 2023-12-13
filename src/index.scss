@@ -1,11 +1,12 @@
-
+$primary: #1B2A41; // oxford blue
+$body-bg: #0C1821;
 
 @import '~bootstrap/scss/bootstrap.scss';
 @import './custom.scss';
 
 
 :root {
-  --primary-color: #1B2A41; // oxford blue
+  --primary-color:  // oxford blue
   --secondary-color: #95190C; //penred
   --secondary-color-light: #ec5847;
   --richblack-color: #0C1821;
