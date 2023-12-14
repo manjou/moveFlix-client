@@ -11,7 +11,7 @@ import "./custom.scss";
 // Main component (will eventually use all the others)
 const MoveFlixApplication = () => {
   return (
-    <Container>
+    <Container fluid>
           <MainView />
     </Container>
   );

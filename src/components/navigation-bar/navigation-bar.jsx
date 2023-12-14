@@ -5,7 +5,7 @@ import Logo from '../../img/moveflix-logo.svg';
 
 export const NavigationBar = ({ user, onLoggedOut }) => {
   return (
-    <Navbar bg="dark" data-bs-theme="dark" expand="lg" fixed='top'>
+    <Navbar bg="dark" data-bs-theme="dark" expand="lg" className='sticky-top mb-5'>
       <Container>
         <Navbar.Brand as={Link} to="/">
           <img

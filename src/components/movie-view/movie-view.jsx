@@ -8,12 +8,12 @@ import PropTypes from "prop-types";
 
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
-  const movie = movies.find((b) => b.id === movieId);
+  const movie = movies.find((movie) => movie._id === movieId);
   if (!movie) {
     return <div>Loading...</div>
   }
   return (
-    <div className="row py-4 MovieView">
+    <div className="row px-10 MovieView">
       <div className="col-md-7">
         <img src={movie.ImagePath} alt="{movie.Title}" className="MovieViewImage w-100" />
       </div>

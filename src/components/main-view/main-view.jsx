@@ -4,15 +4,11 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
-
-// Here you import the PropTypes library
-import PropTypes from "prop-types";
-
+import "./main-view.scss";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import "./main-view.scss";
 import { Nav } from "react-bootstrap";
 
 export const MainView = () => {
@@ -35,6 +31,7 @@ export const MainView = () => {
       .then((data) => {
         const moviesFromApi = data.map((doc) => {
          return {
+            _id: doc._id,
             Title: doc.Title,
             Description: doc.Description,
             ImagePath: doc.ImagePath,
@@ -64,6 +61,7 @@ export const MainView = () => {
         localStorage.clear()
       } 
     } 
+    className="mb-5"
     />
       <Row className="justify-content-md-center">
         <Routes>
