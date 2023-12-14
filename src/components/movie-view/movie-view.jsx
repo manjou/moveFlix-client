@@ -1,10 +1,17 @@
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import './movie-view.scss';
 import Button from "react-bootstrap/Button";
 
 // Here you import the PropTypes library
 import PropTypes from "prop-types";
 
-export const MovieView = ({ movie, onBackClick }) => {
+export const MovieView = ({ movies }) => {
+  const { movieId } = useParams();
+  const movie = movies.find((b) => b.id === movieId);
+  if (!movie) {
+    return <div>Loading...</div>
+  }
   return (
     <div className="row py-4 MovieView">
       <div className="col-md-7">
@@ -41,7 +48,10 @@ export const MovieView = ({ movie, onBackClick }) => {
             <span>{movie.Actors.join(", ")}</span>
           </li>
         </ul>
-        <Button onClick={onBackClick} variant='dark'>Back</Button>
+        <Link to={`/`}>
+          <Button variant='dark'>Back</Button>
+        </Link>
+        
     </div>
   </div>
     
