@@ -13211,11 +13211,13 @@ textarea.form-control-lg {
 }
 
 :root {
-  --primary-color:  / / oxford blue --secondary-color: #95190c;
+  --primary-color: #1b2a41;
+  --secondary-color: #95190c;
   --secondary-color-light: #ec5847;
   --richblack-color: #0c1821;
   --white-color: #fefcfb;
   --charcoal-color: #40434e;
+  --bs-body-color: #fefcfb;
 }
 
 body {
@@ -13238,7 +13240,10 @@ form {
 }
 
 .MoviecardImage {
-  max-width: 100%;
+  object-fit: fill;
+  width: 150px;
+  height: 100%;
+  display: block;
 }
 
 #Movie-Card {
@@ -13270,6 +13275,16 @@ form {
 .MovieCardContainer {
   flex-wrap: wrap;
   display: flex;
+}
+
+.fav-button {
+  cursor: pointer;
+  transition: all .2s linear;
+  position: absolute;
+}
+
+.fav-button:hover {
+  transform: scale(1.2);
 }
 
 :root, [data-bs-theme="light"] {
@@ -26485,11 +26500,13 @@ textarea.form-control-lg {
 }
 
 :root {
-  --primary-color:  / / oxford blue --secondary-color: #95190c;
+  --primary-color: #1b2a41;
+  --secondary-color: #95190c;
   --secondary-color-light: #ec5847;
   --richblack-color: #0c1821;
   --white-color: #fefcfb;
   --charcoal-color: #40434e;
+  --bs-body-color: #fefcfb;
 }
 
 body {
@@ -39750,11 +39767,13 @@ textarea.form-control-lg {
 }
 
 :root {
-  --primary-color:  / / oxford blue --secondary-color: #95190c;
+  --primary-color: #1b2a41;
+  --secondary-color: #95190c;
   --secondary-color-light: #ec5847;
   --richblack-color: #0c1821;
   --white-color: #fefcfb;
   --charcoal-color: #40434e;
+  --bs-body-color: #fefcfb;
 }
 
 body {
@@ -53006,11 +53025,13 @@ textarea.form-control-lg {
 }
 
 :root {
-  --primary-color:  / / oxford blue --secondary-color: #95190c;
+  --primary-color: #1b2a41;
+  --secondary-color: #95190c;
   --secondary-color-light: #ec5847;
   --richblack-color: #0c1821;
   --white-color: #fefcfb;
   --charcoal-color: #40434e;
+  --bs-body-color: #fefcfb;
 }
 
 body {
@@ -66264,11 +66285,13 @@ textarea.form-control-lg {
 }
 
 :root {
-  --primary-color:  / / oxford blue --secondary-color: #95190c;
+  --primary-color: #1b2a41;
+  --secondary-color: #95190c;
   --secondary-color-light: #ec5847;
   --richblack-color: #0c1821;
   --white-color: #fefcfb;
   --charcoal-color: #40434e;
+  --bs-body-color: #fefcfb;
 }
 
 body {
@@ -79521,11 +79544,13 @@ textarea.form-control-lg {
 }
 
 :root {
-  --primary-color:  / / oxford blue --secondary-color: #95190c;
+  --primary-color: #1b2a41;
+  --secondary-color: #95190c;
   --secondary-color-light: #ec5847;
   --richblack-color: #0c1821;
   --white-color: #fefcfb;
   --charcoal-color: #40434e;
+  --bs-body-color: #fefcfb;
 }
 
 body {

@@ -1,7 +1,10 @@
 @import "../../index.scss";
 
 .MoviecardImage {
-  max-width: 100%;
+  display: block;
+  width: 150px;
+  height: 100%;
+  object-fit: fill;
 }
 
 #Movie-Card {
@@ -34,4 +37,14 @@
 .MovieCardContainer {
   display: flex;
   flex-wrap: wrap;
+}
+
+.fav-button {
+  cursor: pointer;
+  transition: 0.2s linear;
+  position: absolute;
+}
+
+.fav-button:hover {
+  transform: scale(1.2);
 }
