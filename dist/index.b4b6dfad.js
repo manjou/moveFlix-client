@@ -27276,7 +27276,7 @@ const MainView = ()=>{
                 console.log(`Token: ${token}`);
                 console.log(`User ID: ${userId}`);
                 console.log(`Movie ID: ${id}`);
-                (0, _axiosDefault.default).post(`https://myflix-api-qeb7.onrender.com/users/${userId}/movies/${id}`, {}, {
+                (0, _axiosDefault.default).post(`https://myflix-api-qeb7.onrender.com/users/${user.Username}/movies/${id}`, {}, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

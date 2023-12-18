@@ -3,9 +3,21 @@ import { Navbar, Container, Nav, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Logo from '../../img/moveflix-logo.svg';
 
-export const NavigationBar = ({ user, onLoggedOut, search, setSearch, selectedGenre, setSelectedGenre }) => {
+export const NavigationBar = ({ 
+  user, 
+  onLoggedOut, 
+  search, 
+  setSearch, 
+  selectedGenre, 
+  setSelectedGenre 
+}) => {
   return (
-    <Navbar bg="dark" data-bs-theme="dark" expand="lg" className='sticky-top mb-5 me-auto d-flex align-items-center'>
+    <Navbar 
+    bg="dark" 
+    data-bs-theme="dark" 
+    expand="lg" 
+    className='sticky-top mb-5 me-auto d-flex align-items-center'
+    >
       <Container>
         <Navbar.Brand as={Link} to="/">
           <img
@@ -36,14 +48,14 @@ export const NavigationBar = ({ user, onLoggedOut, search, setSearch, selectedGe
               <option value="Action">Action</option>
               <option value="Science Fantasy">Science Fantasy</option>
           </Form.Select>
-          <Form.Control
+          {/* <Form.Control
             className="ms-5 ms-md-3 w-40"
             type="search"
             id="searchForm"
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search for ..."
             aria-label="Search"
-          />  
+          />   */}
         </Form>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

@@ -100,7 +100,7 @@ const toggleFav = (id) => {
       console.log(`Token: ${token}`);
       console.log(`User ID: ${userId}`);
       console.log(`Movie ID: ${id}`);
-      axios.post(`https://myflix-api-qeb7.onrender.com/users/${userId}/movies/${id}`, {}, {
+      axios.post(`https://myflix-api-qeb7.onrender.com/users/${user.Username}/movies/${id}`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(response => {
