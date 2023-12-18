@@ -31,6 +31,7 @@ export const NavigationBar = ({
           <Form.Select
             className="me-1 mx-md-0 w-20" 
             aria-label="Default select genre"
+            value={selectedGenre}
             onChange={(e) => setSelectedGenre(e.target.value)}
           >
               <option value="" selected>Search by genre</option>

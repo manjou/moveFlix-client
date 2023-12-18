@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Spinner } from "react-bootstrap";
 import axios from 'axios';
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -23,6 +24,7 @@ export const MainView = () => {
   const [search, setSearch] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [loading, setLoading] = useState(true); // adding state for loading
 
 
   useEffect(() => {
@@ -55,6 +57,7 @@ export const MainView = () => {
         }, [token]);
   
         setMovies(moviesFromApi);
+        setLoading(false); // set Loading on false, when data received
       })
       .catch((err) => {
         console.error(err);
@@ -66,24 +69,16 @@ export const MainView = () => {
 
   // Toggle Favorite Movie
 const toggleFav = (id) => {
-  console.log('toggleFav function has been called');
   const userId = user._id;
-  console.log('user: ', user);
-  console.log('toggleFav called with movie ID: ', id); // Changed movie._id to id
 
   //check if the movie ID exists in the movies state
   const movieExists = movies.some(movie => movie._id === id);
   if (!movieExists) {
-    console.log('the movie ID does not exist')
     return;
   }
-  console.log('Checking if movie is in favorites');
   if (user.FavoriteMovies.includes(id)) {
-    console.log(`Token: ${token}`);
-    console.log(`User ID: ${userId}`);
-    console.log(`Movie ID: ${id}`);
 
-    axios.delete(`https://myflix-api-qeb7.onrender.com/users/${userId}/movies/${id}`, {
+    axios.delete(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(response => {
@@ -97,10 +92,7 @@ const toggleFav = (id) => {
   } else {
     console.log('Checking if movie is not in favorites');
     if (!user.FavoriteMovies.includes(id)){
-      console.log(`Token: ${token}`);
-      console.log(`User ID: ${userId}`);
-      console.log(`Movie ID: ${id}`);
-      axios.post(`https://myflix-api-qeb7.onrender.com/users/${user.Username}/movies/${id}`, {}, {
+      axios.post(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(response => {
@@ -118,7 +110,7 @@ const toggleFav = (id) => {
 
 // Add Favorite Movie
 const addFav = (id) => {
-  axios.post(`https://myflix-api-qeb7.onrender.com/users/${user.Username}/movies/${id}`, {}, {
+  axios.post(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {}, {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -140,7 +132,7 @@ const addFav = (id) => {
 // Remove Favorite Movie
 
 const removeFav = (id) => {
-  axios.delete(`https://myflix-api-qeb7.onrender.com/users/${user.Username}/movies/${id}`, {
+  axios.delete(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -208,10 +200,10 @@ const removeFav = (id) => {
             path="/movies/:movieId"
             element={!user ? (
                   <Navigate to="/login" replace />
-                ) : movies.length === 0 ? (
-                  <Col>
-                    The list is empty!
-                  </Col>
+                ) : loading ? ( // when loading true,show spinner
+                  <Spinner animation="border" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </Spinner>
                 ) : (
                   <Col md={12}>
                     <MovieView
@@ -228,6 +220,10 @@ const removeFav = (id) => {
             path="/"
             element={!user ? (
                   <Navigate to="/login" replace />
+                ) : loading ? ( // Wenn loading true ist, zeigen Sie den Spinner an
+                <Spinner animation="border" role="status">
+                  <span className="sr-only">Loading...</span>
+                </Spinner>
                 ) : movies.length === 0 ? (
                   <Col>
                     The list is empty!
@@ -265,6 +261,7 @@ const removeFav = (id) => {
                       <ProfileView
                         user={user}
                         movies={movies}
+                        toggleFav={toggleFav}
                         removeFav={removeFav}
                         addFav={addFav}
                         setUser={setUser}

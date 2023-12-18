@@ -7,12 +7,17 @@ import { PersonSquare } from "react-bootstrap-icons";
 import moment from 'moment';
 import axios from "axios";
 import UserInfo from "./user-info";
+import FavoriteMovies from "./favorite-movies";
+import UserForm from "./user-form";
 
 
 export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
   const [username, setUsername] = useState(user.Username);
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
+  const [password, setPassword] = useState(''); // initial value can be empty or user's current password
+
+
 
   // Navigate
   const navigate = useNavigate();
@@ -37,7 +42,7 @@ export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
       BirthDay: Birthday
     }
 
-    fetch(`https://myflix-api-qeb7.onrender.com/users/${user.Username}`, {
+    fetch(`https://myflix-api-qeb7.onrender.com/users/${user.userId}`, {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -61,7 +66,7 @@ export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
 
   // Delete User
   const handleDelete = () => {
-    fetch(`https://myflix-api-qeb7.onrender.com/users/${user.Username}`, {
+    fetch(`https://myflix-api-qeb7.onrender.com/users/${user.userId}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`
@@ -80,20 +85,22 @@ export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
 
 
   return (
-    <Container className="my5">
-      <Row>
-        <Col>< name={user.Username} email{ user.Email } />
-        </Col>
-      </Row>
-      <Row>favoriteM</Row>
-      <Row>userForm</Row>
+    <Container className="my5"> 
+      <UserForm 
+        user={user} 
+        handleUpdate={handleUpdate} 
+        handleDelete={handleDelete} 
+        username={username} 
+        setUsername={setUsername} 
+        password={password} 
+        setPassword={setPassword} 
+        email={email} 
+        setEmail={setEmail} 
+        birthday={birthday} 
+        setBirthday={setBirthday} 
+      />
 
-
-
-
-
-
-
+      <FavoriteMovies favoriteMovieList={favoriteMovieList } toggleFav={toggleFav} user={user} />
 
     </Container>
   );
