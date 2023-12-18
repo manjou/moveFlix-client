@@ -1,5 +1,40 @@
-$color: steelblue;
+$primary: #1B2A41; // oxford blue
+$body-bg: #0C1821;
+
+@import '~bootstrap/scss/bootstrap.scss';
+@import './custom.scss';
+
+
+:root {
+  --primary-color:  #1B2A41; // oxford blue
+  --secondary-color: #95190C; //penred
+  --secondary-color-light: #ec5847;
+  --richblack-color: #0C1821;
+  --white-color: #FEFCFB;
+  --charcoal-color: #40434E; 
+  --bs-body-color: #FEFCFB;
+}
+
+
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  background-color: var(--richblack-color);
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  color: var(--white-color);
+}
+
 
 .my-flix {
-  color: $color;
+  color: var(--primary-color);
+}
+
+
+
+form {
+  color: var(--white-color);
 }

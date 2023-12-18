@@ -1,0 +1,19 @@
+@import "../../index.scss";
+
+body {
+  background-color: var(--richblack-color);
+}
+
+.hr {
+  color: var(--white-color);
+}
+
+.Logout-Button {
+  padding: 4px 12px 4px 12px;
+  color: whitesmoke;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 4px;
+  width: 70px;
+  cursor: pointer;
+}

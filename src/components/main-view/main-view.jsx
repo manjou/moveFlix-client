@@ -1,126 +1,445 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from 'axios';
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
-
+import { LoginView } from "../login-view/login-view";
+import { SignupView } from "../signup-view/signup-view";
+import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { ProfileView } from "../profile-view/profile-view";
+import "./main-view.scss";
+import { Row, Col, Form, Button } from "react-bootstrap";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 
 export const MainView = () => {
-  const [movies, setMovies] = useState([
-      {
-        "_id": 1,
-        "Title": "Schindler's List",
-        "Description": "Schindler's List is a 1993 American epic historical drama film directed...",
-        "Director": {
-          "Name": "Steven Spielberg",
-          "Bio": "Steven Spielberg is an American film director, producer, and screenwriter.",
-          "Birth": "1946"
-        },
-        "Genre": {
-          "Name": "Historical Drama",
-          "Description": "Historical drama films are set in the past and focus on historical events."
-        },
-        "ImagePath": "https://flxt.tmsimg.com/assets/p15227_p_v13_be.jpg",
-        "Featured": true,
-        "Release": "1994",
-        "Actors": ["Liam Neeson", "Ben Kingsley"]
-      },
-      {
-        "_id": 2,
-        "Title": "Titanic",
-        "Description": "Titanic is a 1997 American epic romance and disaster film directed by...",
-        "Director": {
-          "Name": "James Cameron",
-          "Bio": "James Cameron is a Canadian film director, producer, and screenwriter.",
-          "Birth": "1954"
-        },
-        "Genre": {
-          "Name": "Romance",
-          "Description": "Romance films are love stories that focus on passion, emotion, and the..."
-        },
-        "ImagePath": "https://www.tvguide.com/a/img/catalog/provider/1/2/1-9050537522.jpg",
-        "Featured": false,
-        "Release": "1997",
-        "Actors": ["Leonardo DiCaprio", "Kate Winslet"]
-      },
-      {
-        "_id": 3,
-        "Title": "Spirited Away",
-        "Description": "Spirited Away is a 2001 Japanese animated fantasy film written and directed...",
-        "Director": {
-          "Name": "Hayao Miyazaki",
-          "Bio": "Hayao Miyazaki is a Japanese animator, director, and producer.",
-          "Birth": "1941"
-        },
-        "Genre": {
-          "Name": "Animation",
-          "Description": "Animation films involve the rapid display of a sequence of images to create..."
-        },
-        "ImagePath": "https://www.bestmovieposters.co.uk/wp-content/uploads/2019/02/SPIRITED.jpg",
-        "Featured": true,
-        "Release": "2001",
-        "Actors": ["Rumi Hiiragi", "Miyu Irino"]
-      },
-      {
-        "_id": 4,
-        "Title": "A Clockwork Orange",
-        "Description": "A Clockwork Orange is a 1971 dystopian crime film adapted, produced, and directed...",
-        "Director": {
-          "Name": "Stanley Kubrick",
-          "Bio": "Stanley Kubrick was an American film director, producer, and screenwriter.",
-          "Birth": "1928"
-        },
-        "Genre": {
-          "Name": "Dystopian Crime",
-          "Description": "Dystopian crime films are set in a society characterized by human misery..."
-        },
-        "ImagePath": "https://alternativemovieposters.com/wp-content/uploads/2018/02/liza_clockwork.jpg",
-        "Featured": true,
-        "Release": "1971",
-        "Actors": ["Malcolm McDowell", "Patrick Magee"]
-      },
-      {
-        "_id": 5,
-        "Title": "Inglourious Basterds",
-        "Description": "Inglourious Basterds is a 2009 alternate history war film written and...",
-        "Director": {
-          "Name": "Quentin Tarantino",
-          "Bio": "Quentin Tarantino is an American filmmaker and actor known for his nontraditional...",
-          "Birth": "1963"
-        },
-        "Genre": {
-          "Name": "War Drama",
-          "Description": "War drama films depict the effects of war on individuals and societies..."
-        },
-        "ImagePath": "https://vignette4.wikia.nocookie.net/inglouriousbasterds/images/c/c3/Inglourious_Basterds_poster.jpg/revision/latest?cb=20131226131149",
-        "Featured": true,
-        "Release": "2009",
-        "Actors": ["Brad Pitt", "Mélanie Laurent"]
-      }
-    ]);
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedToken = localStorage.getItem("token");
+  const [user, setUser] = useState(storedUser? storedUser: null);
+  const [token, setToken] = useState(storedToken? storedToken: null);
+  // const [user, setUser] = useState(localStorage.getItem("user"));
+  // const [token, setToken] = useState(localStorage.getItem("token"));  
 
+  const [movies, setMovies] = useState([]);
+  const [search, setSearch] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedMovie, setSelectedMovie] = useState(null);
 
-  if (selectedMovie) {
-    return (
-      <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
-    );
-  }
 
-  if (movies.length === 0) {
-    return <div>The list is empty!</div>;
-  }
+  useEffect(() => {
+    
+    if (!token) {
+      return;
+    }
 
+    fetch("https://myflix-api-qeb7.onrender.com/movies", {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const moviesFromApi = data.map((doc) => {
+         return {
+            _id: doc._id,
+            Title: doc.Title,
+            Description: doc.Description,
+            ImagePath: doc.ImagePath,
+            Rating: doc.Rating,
+            Director: {
+              Name: doc.Director.Name
+            },
+            Genre: {
+              Name: doc.Genre.Name,
+            },
+            Release: doc.Release,
+            Actors: doc.Actors
+          };
+        }, [token]);
+  
+        setMovies(moviesFromApi);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [token]);
+
+  // let similarMovies = selectedMovie ? movies.filter(movie => movie.Genre.Name === selectedMovie.Genre.Name) : [];
+
+
+  // Toggle Favorite Movie
+const toggleFav = (id) => {
+  console.log('toggleFav function has been called');
+  const userId = user._id;
+  console.log('user: ', user);
+  console.log('toggleFav called with movie ID: ', id); // Changed movie._id to id
+
+  //check if the movie ID exists in the movies state
+  const movieExists = movies.some(movie => movie._id === id);
+  if (!movieExists) {
+    console.log('the movie ID does not exist')
+    return;
+  }
+  console.log('Checking if movie is in favorites');
+  if (user.FavoriteMovies.includes(id)) {
+    console.log(`Token: ${token}`);
+    console.log(`User ID: ${userId}`);
+    console.log(`Movie ID: ${id}`);
+
+    axios.delete(`https://myflix-api-qeb7.onrender.com/users/${userId}/movies/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then(response => {
+      const data = response.data;
+      setUser(data);
+    })
+    .catch(e => {
+      console.log('error removing the movie from favorites')
+      console.log(e);
+    });
+  } else {
+    console.log('Checking if movie is not in favorites');
+    if (!user.FavoriteMovies.includes(id)){
+      console.log(`Token: ${token}`);
+      console.log(`User ID: ${userId}`);
+      console.log(`Movie ID: ${id}`);
+      axios.post(`https://myflix-api-qeb7.onrender.com/users/${user.Username}/movies/${id}`, {}, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then(response => {
+      const data = response.data;
+      setUser(data);
+    })
+    .catch(e => {
+      console.log('error adding the movie to favorites')
+      console.log(e.response.data);
+    });
+  }
+    }
+
+};
+
+// Add Favorite Movie
+const addFav = (id) => {
+  axios.post(`https://myflix-api-qeb7.onrender.com/users/${user.Username}/movies/${id}`, {}, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  .then(response => {
+    const user = response.data;
+    localStorage.setItem('user', JSON.stringify(user));
+    setUser(user);
+  })
+  .catch(error => {
+    console.error('Error: ', error.response.data);
+    alert("Failed to add");
+  });
+};
+
+
+
+
+// Remove Favorite Movie
+
+const removeFav = (id) => {
+  axios.delete(`https://myflix-api-qeb7.onrender.com/users/${user.Username}/movies/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+  .then(response => {
+    const user = response.data;
+    localStorage.setItem('user', JSON.stringify(user));
+    setUser(user);
+  })
+  .catch(error => {
+    console.error('Error: ', error)
+  });
+};
+
+
+// Routes Definition
   return (
-    <div>
-      {movies.map((movie) => (
-        <MovieCard
-          key={movie._id}
-          movie={movie}
-          onMovieClick={(newSelectedMovie) => {
-            setSelectedMovie(newSelectedMovie);
-          }}
-        />
-      ))}
-    </div>
+    <BrowserRouter>
+    <NavigationBar 
+      user={user}
+      onLoggedOut={() => {
+        setUser(null)
+        setToken(null)
+        localStorage.clear()
+      }} 
+    className="mb-5"
+    search={search}
+    setSearch={setSearch}
+    selectedGenre={selectedGenre}
+    setSelectedGenre={setSelectedGenre}
+    />
+      <Row className="justify-content-md-center">
+        <Routes>
+          {/* Return SignupView if not logged in, otherwise home */}
+          <Route
+            path="/signup"
+            element={user ? (
+                  <Navigate to="/" />
+                ) : (
+                  <Col md={5}>
+                    <SignupView />
+                  </Col>
+                )
+            }
+          />
+          {/* Return LoginView if not logged in, otherwise home */}
+          <Route
+            path="/login"
+            element={user ? (
+                  <Navigate to="/" />
+                ) : (
+                  <Col md={5}>
+                    <LoginView
+                      onLoggedIn={(user, token) => {
+                        setUser(user);
+                        setToken(token);
+                      }}
+                    />
+                  </Col>
+                )
+            }
+          />
+          {/* Return MovieView if logged in, otherwise LoginView */}
+          <Route
+            path="/movies/:movieId"
+            element={!user ? (
+                  <Navigate to="/login" replace />
+                ) : movies.length === 0 ? (
+                  <Col>
+                    The list is empty!
+                  </Col>
+                ) : (
+                  <Col md={12}>
+                    <MovieView
+                      movies={movies}
+                      addFav={addFav}
+                      removeFav={removeFav} 
+                    />
+                  </Col>
+                )
+            }
+          />
+          {/* Return MovieCards if logged in, otherwise LoginView */}
+          <Route
+            path="/"
+            element={!user ? (
+                  <Navigate to="/login" replace />
+                ) : movies.length === 0 ? (
+                  <Col>
+                    The list is empty!
+                  </Col>
+                ) : (
+                  movies.filter((movie) => {
+                      return selectedGenre === ""
+                      ? movie
+                      : movie.Genre && movie.Genre.Name === selectedGenre;
+                    })
+                    .filter((movie) => {
+                      return search === ""
+                      ? movie
+                      : movie.Title.toLowerCase().includes(search.toLowerCase());
+                    })
+                    .map((movie, movieId) => (
+                      <Col className="mb-4 col-8" key={movie.id} md={6} lg={4} xl={3}>
+                        <MovieCard 
+                          movie={movie}
+                          toggleFav={toggleFav}
+                          isFavorite={user && user.FavoriteMovies ? user.FavoriteMovies.includes(movie._id) : false}
+                        />
+                      </Col>
+                    ))
+                )
+            }
+          />
+          {/* Return ProfileView if logged in, otherwise LoginView */}
+          <Route
+            path="/profile"
+            element={!user ? (
+                  <Navigate to="/login" replace />
+                  ) : (
+                    <Col>
+                      <ProfileView
+                        user={user}
+                        movies={movies}
+                        removeFav={removeFav}
+                        addFav={addFav}
+                        setUser={setUser}
+                      />
+                    </Col>
+                  )
+            }
+          />
+        </Routes>
+      </Row>
+    </BrowserRouter>
   );
 };
+    
+    
+
+    // old code before routing.  left it to check for similar movies to be implementing
+  //     {!user ? (
+  //       <Col md={5}>
+  //         <LoginView onLoggedIn={(user) => {
+  //            setUser(user);
+  //            setToken(localStorage.getItem('token'));
+  //         }} />
+  //         or
+  //         <SignupView />
+  //       </Col>
+  //     ) : selectedMovie ? (
+  //       <>
+  //       <Col md={2}>
+  //         <Button
+  //           onClick={() => {
+  //             setUser(null);
+  //             setToken(null);
+  //             localStorage.clear();
+  //           }}
+  //           variant="dark"
+  //         >
+  //           Logout
+  //         </Button>
+  //       </Col>
+       
+  //       <Col md={8}>
+  //        <MovieView
+  //           movie={selectedMovie} 
+  //           onBackClick={() => setSelectedMovie(null)} 
+  //         />
+  //       </Col>
+        
+  //       <h2><hr></hr></h2>
+        
+  //       <h2>Similar Movies</h2>
+  //         <>   
+  //           {similarMovies.map((movie) => (
+  //             <Col className="mb-4" key={movie._id} md={3}>
+  //               <MovieCard
+  //                 movie={movie}
+  //                 onMovieClick={(newSelectedMovie) => {
+  //                   setSelectedMovie(newSelectedMovie);
+  //                   }}  
+  //               />
+  //             </Col>
+  //           ))}
+  //         </>
+  //       </>
+  //     ) : movies.length === 0 ? (
+  //       <div>The list is empty!</div>
+  //     ) : (
+  //       <>
+  //         {movies.map((movie) => (
+  //           <Col className="mb-4" key={movie._id} md={4} xs={6}>
+  //             <MovieCard
+  //               movie={movie}
+  //               onMovieClick={(newSelectedMovie) => {
+  //               setSelectedMovie(newSelectedMovie);
+  //               }}
+  //             />
+  //           </Col>
+  //         ))}
+  //       </>
+  //     )}
+  //   </Row>
+  // );
+  // }
+
+
+
+
+
+
+  // if (!user) {
+  //   return (
+  //     <>
+  //       <LoginView onLoggedIn={(user, token) => {
+  //       setUser(user);
+  //       setToken(token);
+  //       }}
+  //       />
+  //       or
+  //       <SignupView />
+  //     </>
+  //   );
+  // }
+
+
+
+  // if (selectedMovie) {
+  //   let similarMovies = movies.filter(movie => movie.Genre.Name === selectedMovie.Genre.Name);
+  //   return (
+  //     <>
+  //       <button
+  //         onClick={() => {
+  //           setUser(null);
+  //           setToken(null);
+  //           localStorage.clear();
+  //         }}
+  //       >
+  //         Logout
+  //       </button>
+  //       <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
+  //       <hr />
+  //       <h2>Similar Movies</h2>
+  //       <div className="MovieCardContainer">
+  //         {similarMovies.map((movie) => {
+  //           return (
+  //             <MovieCard
+  //               key={movie._id}
+  //               movie={movie}
+  //               onMovieClick={(newSelectedMovie) => {
+  //                 setSelectedMovie(newSelectedMovie);
+  //               }}  
+  //             />   
+  //           );
+  //         })}
+  //       </div>
+    
+  //     </>
+  //   );
+  // }
+
+  // if (movies.length === 0) {
+  //   return (
+  //     <>
+  //       <button 
+  //         onClick={() => {
+  //           setUser(null);
+  //           setToken(null);
+  //           localStorage.clear();
+  //         }}
+  //       >
+  //         Logout
+  //       </button>
+  //       <div>The list is empty!</div>;
+  //     </>
+  //   )
+  // }
+
+  // return (
+    
+  //   <div className="MovieCardContainer">
+  //     <button
+  //       onClick={() => {
+  //         setUser(null);
+  //         setToken(null);
+  //         localStorage.clear();
+  //       }}
+  //     >
+  //       Logout
+  //     </button>
+  //     {movies.map((movie) => (
+  //       <MovieCard
+  //         key={movie._id}
+  //         movie={movie}
+  //         onMovieClick={(newSelectedMovie) => {
+  //           setSelectedMovie(newSelectedMovie);
+  //         }}
+  //       />
+  //     ))}
+  //   </div>

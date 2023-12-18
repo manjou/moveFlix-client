@@ -1,14 +1,19 @@
 import { createRoot } from 'react-dom/client';
 import { MainView  } from './components/main-view/main-view';
+// import "bootstrap/dist/css/bootstrap.min.css";
+import Container from 'react-bootstrap/Container';
 
 
 // Import statement to indicate that you need to bundle `./indes.scss``
 import "./index.scss";
+import "./custom.scss";
 
 // Main component (will eventually use all the others)
 const MoveFlixApplication = () => {
   return (
-    <MainView />
+    <Container fluid>
+          <MainView />
+    </Container>
   );
 };
 
