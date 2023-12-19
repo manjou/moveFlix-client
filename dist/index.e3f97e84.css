@@ -13239,24 +13239,33 @@ form {
   color: var(--white-color);
 }
 
-.MoviecardImage {
-  object-fit: fill;
-  width: 150px;
-  height: 100%;
+.card-img {
   display: block;
 }
 
+.card-img .MoviecardImage {
+  object-fit: cover;
+  width: 250px;
+}
+
 #Movie-Card {
+  text-overflow: ellipsis;
+  white-space: nowrap;
   background-color: var(--primary-color);
   color: var(--white-color);
   box-shadow: 3px 3px 5px var(--charcoal-color);
+  position: relative;
+  overflow: hidden;
+}
+
+#Movie-Card img {
+  height: 400px;
 }
 
 #MovieCardInfo {
   background-color: var(--primary-color);
   color: var(--white-color);
   justify-content: space-between;
-  align-items: center;
   padding: 1rem;
   display: flex;
 }
@@ -13272,15 +13281,10 @@ form {
   font-weight: 400;
 }
 
-.MovieCardContainer {
-  flex-wrap: wrap;
-  display: flex;
-}
-
 .fav-button {
   cursor: pointer;
+  align-items: end;
   transition: all .2s linear;
-  position: absolute;
 }
 
 .fav-button:hover {
@@ -66329,6 +66333,10 @@ body {
   border-radius: 4px;
   width: 70px;
   padding: 4px 12px;
+}
+
+.CardText span {
+  font-weight: 200;
 }
 
 :root, [data-bs-theme="light"] {

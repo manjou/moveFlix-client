@@ -1,16 +1,25 @@
 @import "../../index.scss";
 
-.MoviecardImage {
+.card-img  {
+  .MoviecardImage {
+    width: 250px;
+    object-fit: cover;
+  }
   display: block;
-  width: 150px;
-  height: 100%;
-  object-fit: fill;
+  
 }
 
 #Movie-Card {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   background-color: var(--primary-color);
   color: var(--white-color);
   box-shadow: 3px 3px 5px var(--charcoal-color);
+  img {
+    height: 400px;
+  }
 }
 
 #MovieCardInfo {
@@ -18,7 +27,7 @@
   background-color: var(--primary-color);
   color: var(--white-color);
   padding: 1rem;
-  align-items: center;
+  // align-items: center;
   justify-content: space-between;
 }
 
@@ -34,15 +43,15 @@
 
 
 
-.MovieCardContainer {
-  display: flex;
-  flex-wrap: wrap;
-}
+// .MovieCardContainer {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
 
 .fav-button {
+  align-items: end;
   cursor: pointer;
   transition: 0.2s linear;
-  position: absolute;
 }
 
 .fav-button:hover {
