@@ -98,7 +98,7 @@ export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
 
 
   return (
-    <Container className="my5"> 
+    <Container> 
       <UserForm 
         user={userInfo} 
         handleUpdate={handleUpdate} 

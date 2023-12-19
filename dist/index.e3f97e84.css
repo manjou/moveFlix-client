@@ -13239,11 +13239,8 @@ form {
   color: var(--white-color);
 }
 
-.MoviecardImage {
-  object-fit: fill;
-  width: 150px;
-  height: 100%;
-  display: block;
+Figure img {
+  height: 400px;
 }
 
 #Movie-Card {
@@ -13252,35 +13249,22 @@ form {
   box-shadow: 3px 3px 5px var(--charcoal-color);
 }
 
-#MovieCardInfo {
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  display: flex;
+.MovieCard figure {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
 }
 
-.MovieCardInfo h3, .MovieCardInfo .h3 {
-  color: var(--secondary-color);
-  margin: 0;
-  font-size: 1rem;
-}
-
-.MovieCardInfo h2, .MovieCardInfo .h2 {
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-.MovieCardContainer {
-  flex-wrap: wrap;
-  display: flex;
+.MovieCard figure img {
+  height: 400px;
 }
 
 .fav-button {
   cursor: pointer;
   transition: all .2s linear;
-  position: absolute;
+  position: relative;
 }
 
 .fav-button:hover {

@@ -1,11 +1,6 @@
 @import "../../index.scss";
 
-.MoviecardImage {
-  display: block;
-  width: 150px;
-  height: 100%;
-  object-fit: fill;
-}
+
 
 #Movie-Card {
   background-color: var(--primary-color);
@@ -13,36 +8,25 @@
   box-shadow: 3px 3px 5px var(--charcoal-color);
 }
 
-#MovieCardInfo {
-  display: flex;
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  padding: 1rem;
-  align-items: center;
-  justify-content: space-between;
+
+.MovieCard {
+  figure {
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: auto;
+    img {
+      height: 400px;
+    }
+  }
 }
 
-.MovieCardInfo h3 {
-  margin: 0;
-  font-size: 1rem;
-  color: var(--secondary-color);
-}
-.MovieCardInfo h2 {
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-
-
-.MovieCardContainer {
-  display: flex;
-  flex-wrap: wrap;
-}
 
 .fav-button {
   cursor: pointer;
   transition: 0.2s linear;
-  position: absolute;
+  position: relative;
 }
 
 .fav-button:hover {

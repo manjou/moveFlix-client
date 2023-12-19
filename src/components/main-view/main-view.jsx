@@ -240,7 +240,7 @@ const removeFav = (id) => {
                       : movie.Title.toLowerCase().includes(search.toLowerCase());
                     })
                     .map((movie, movieId) => (
-                      <Col className="mb-4 col-8" key={movie.id}  xs={12} sm={9} md={6} lg={3} xl={2}>
+                      <Col className="mb-3" key={movie.id}  xs={12} md={6} lg={3} xl={2}>
                         <MovieCard 
                           movie={movie}
                           toggleFav={toggleFav}
