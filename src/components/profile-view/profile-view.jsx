@@ -1,22 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
 import { MovieCard } from "../movie-card/movie-card";
 import { PersonSquare } from "react-bootstrap-icons";
-import moment from 'moment';
+// import moment from 'moment';
 import axios from "axios";
 import UserInfo from "./user-info";
 import FavoriteMovies from "./favorite-movies";
 import UserForm from "./user-form";
+import "./profile-view.scss";
 
 
 export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
   const [username, setUsername] = useState(user.Username);
   const [email, setEmail] = useState(user.Email);
-  const [birthday, setBirthday] = useState(user.Birthday);
+  const [birthday, setBirthDay] = useState(user.BirthDay ? new Date(user.BirthDay).toISOString().split('T')[0] : '');
   const [password, setPassword] = useState(''); // initial value can be empty or user's current password
+  const [userInfo, setUserInfo] = useState(user);
 
+  useEffect(() => {
+    setUserInfo(user);
+  }, [user]);
 
 
   // Navigate
@@ -28,21 +33,26 @@ export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
   // get Token
   const token = localStorage.getItem('token');
 
-  // Update user info
+
+  // Update user info / HANDLE UPDATE
   const handleUpdate = (event) => {
     // this prevents the default behavior of the form which is to reload the entire page
     event.preventDefault();
 
     const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user);
 
     const data ={
       Username: username,
-      Password: password,
+      // Password: password,
       Email: email,
-      BirthDay: Birthday
     }
 
-    fetch(`https://myflix-api-qeb7.onrender.com/users/${user.userId}`, {
+    if (birthday) {
+      data.BirthDay = new Date(birthday).toISOString().split('T')[0]; // Convert birthday in date object
+    }
+ 
+    fetch(`https://myflix-api-qeb7.onrender.com/users/${user._id}`, {
       method: "PUT",
       body: JSON.stringify(data),
       headers: {
@@ -52,9 +62,12 @@ export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
     }).then(async (response) => {
       console.log(response)
       if (response.ok) {
-        const updatedUser = await response.json();
+        const text = await response.text();
+        console.log(text);
+        const updatedUser = JSON.parse(text);
         localStorage.setItem('user', JSON.stringify(updatedUser));
         setUser(updatedUser);
+        setUserInfo(updatedUser); // Update the userInfo state
         alert("Update User was successful");
       } else {
         alert("Update failed")
@@ -66,7 +79,7 @@ export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
 
   // Delete User
   const handleDelete = () => {
-    fetch(`https://myflix-api-qeb7.onrender.com/users/${user.userId}`, {
+    fetch(`https://myflix-api-qeb7.onrender.com/users/${user._id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`
@@ -87,7 +100,7 @@ export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
   return (
     <Container className="my5"> 
       <UserForm 
-        user={user} 
+        user={userInfo} 
         handleUpdate={handleUpdate} 
         handleDelete={handleDelete} 
         username={username} 
@@ -97,7 +110,7 @@ export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
         email={email} 
         setEmail={setEmail} 
         birthday={birthday} 
-        setBirthday={setBirthday} 
+        setBirthday={setBirthDay} 
       />
 
       <FavoriteMovies favoriteMovieList={favoriteMovieList } toggleFav={toggleFav} user={user} />

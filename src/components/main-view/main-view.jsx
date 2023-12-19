@@ -202,7 +202,7 @@ const removeFav = (id) => {
                   <Navigate to="/login" replace />
                 ) : loading ? ( // when loading true,show spinner
                   <Spinner animation="border" role="status">
-                    <span className="sr-only">Loading...</span>
+                    <span className="sr-only">...</span>
                   </Spinner>
                 ) : (
                   <Col md={12}>
@@ -222,7 +222,7 @@ const removeFav = (id) => {
                   <Navigate to="/login" replace />
                 ) : loading ? ( // Wenn loading true ist, zeigen Sie den Spinner an
                 <Spinner animation="border" role="status">
-                  <span className="sr-only">Loading...</span>
+                  <span className="sr-only">...</span>
                 </Spinner>
                 ) : movies.length === 0 ? (
                   <Col>
@@ -240,7 +240,7 @@ const removeFav = (id) => {
                       : movie.Title.toLowerCase().includes(search.toLowerCase());
                     })
                     .map((movie, movieId) => (
-                      <Col className="mb-4 col-8" key={movie.id} md={6} lg={4} xl={3}>
+                      <Col className="mb-4 col-8" key={movie.id}  xs={12} sm={9} md={6} lg={3} xl={2}>
                         <MovieCard 
                           movie={movie}
                           toggleFav={toggleFav}
