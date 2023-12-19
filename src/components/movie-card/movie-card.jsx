@@ -9,24 +9,29 @@ import { BookmarkHeart, BookmarkHeartFill } from "react-bootstrap-icons";
 
 export const MovieCard = ({ movie, toggleFav, addFav, isFavorite }) => {
   return (
-    <Card className="h-100" id="Movie-Card">
-      <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
-        <Card.Img variant="top" src={movie.ImagePath}  alt={`Image of ${movie.Title}`} className="MoviecardImage"/>
-      </Link>     
-      <Card.Body id="Movie-Card-Info">
-        <div>
-          {isFavorite ? (
-            <BookmarkHeartFill size={40} color="red" className="fav-button mt-2 me-2 top-0 end-0" onClick={() => toggleFav(movie._id)}/>
-            ) : (
-            <BookmarkHeart size={40} color="red" className="fav-button mt-2 me-2 top-0 end-0" onClick={() => toggleFav(movie._id)}/>
-          )}
-        </div>
-        <Card.Title>{movie.Title}</Card.Title>
-        <Card.Text>{movie.Rating}</Card.Text>
-  
+<Card className="h-100" id="Movie-Card">
+  <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
+    <Card.Img variant="top" src={movie.ImagePath}  alt={`Image of ${movie.Title}`} className="MoviecardImage"/>
+  </Link>     
 
-      </Card.Body>
-    </Card>
+  <div className="d-flex justify-content-between align-items-start">
+    <div>
+      <Card.Title className="mx-3 mt-3">{movie.Title}</Card.Title>
+      <div className="d-flex justify-content-center mt-3 mb-3" style={{backgroundColor: 'var(--secondary-color)', width: '30px', height: '25px'}}>
+        <div className="ml-3">
+          <Card.Text>{movie.Rating}</Card.Text>
+        </div>
+      </div>
+    </div>
+    <div>
+      {isFavorite ? (
+        <BookmarkHeartFill size={40} color="var(--secondary-color)" className="fav-button mt-3 me-3" onClick={() => toggleFav(movie._id)}/>
+        ) : (
+        <BookmarkHeart size={40} color="var(--secondary-color)" className="fav-button mt-3 me-3" onClick={() => toggleFav(movie._id)}/>
+      )}
+    </div>
+  </div>
+</Card>
   );
 };
 

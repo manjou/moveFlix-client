@@ -13244,13 +13244,22 @@ form {
 }
 
 .card-img .MoviecardImage {
+  object-fit: cover;
   width: 250px;
 }
 
 #Movie-Card {
+  text-overflow: ellipsis;
+  white-space: nowrap;
   background-color: var(--primary-color);
   color: var(--white-color);
   box-shadow: 3px 3px 5px var(--charcoal-color);
+  position: relative;
+  overflow: hidden;
+}
+
+#Movie-Card img {
+  height: 400px;
 }
 
 #MovieCardInfo {

@@ -202,7 +202,7 @@ const removeFav = (id) => {
                   <Navigate to="/login" replace />
                 ) : loading ? ( // when loading true,show spinner
                   <Spinner animation="border" role="status">
-                    <span className="sr-only">...</span>
+                    <span className="sr-only"></span>
                   </Spinner>
                 ) : (
                   <Col md={12}>
@@ -222,7 +222,7 @@ const removeFav = (id) => {
                   <Navigate to="/login" replace />
                 ) : loading ? ( // Wenn loading true ist, zeigen Sie den Spinner an
                 <Spinner animation="border" role="status">
-                  <span className="sr-only">...</span>
+                  <span className="sr-only"></span>
                 </Spinner>
                 ) : movies.length === 0 ? (
                   <Col>
