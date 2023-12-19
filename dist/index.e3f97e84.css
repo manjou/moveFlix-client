@@ -13239,10 +13239,6 @@ form {
   color: var(--white-color);
 }
 
-Figure img {
-  height: 400px;
-}
-
 #Movie-Card {
   background-color: var(--primary-color);
   color: var(--white-color);
