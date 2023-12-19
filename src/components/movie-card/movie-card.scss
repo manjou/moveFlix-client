@@ -1,10 +1,11 @@
 @import "../../index.scss";
 
-.MoviecardImage {
+.card-img  {
+  .MoviecardImage {
+    width: 250px;
+  }
   display: block;
-  width: 150px;
-  height: 100%;
-  object-fit: fill;
+  
 }
 
 #Movie-Card {
@@ -18,7 +19,7 @@
   background-color: var(--primary-color);
   color: var(--white-color);
   padding: 1rem;
-  align-items: center;
+  // align-items: center;
   justify-content: space-between;
 }
 
@@ -34,15 +35,15 @@
 
 
 
-.MovieCardContainer {
-  display: flex;
-  flex-wrap: wrap;
-}
+// .MovieCardContainer {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
 
 .fav-button {
+  align-items: end;
   cursor: pointer;
   transition: 0.2s linear;
-  position: absolute;
 }
 
 .fav-button:hover {

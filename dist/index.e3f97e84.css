@@ -13239,11 +13239,12 @@ form {
   color: var(--white-color);
 }
 
-.MoviecardImage {
-  object-fit: fill;
-  width: 150px;
-  height: 100%;
+.card-img {
   display: block;
+}
+
+.card-img .MoviecardImage {
+  width: 250px;
 }
 
 #Movie-Card {
@@ -13256,7 +13257,6 @@ form {
   background-color: var(--primary-color);
   color: var(--white-color);
   justify-content: space-between;
-  align-items: center;
   padding: 1rem;
   display: flex;
 }
@@ -13272,15 +13272,10 @@ form {
   font-weight: 400;
 }
 
-.MovieCardContainer {
-  flex-wrap: wrap;
-  display: flex;
-}
-
 .fav-button {
   cursor: pointer;
+  align-items: end;
   transition: all .2s linear;
-  position: absolute;
 }
 
 .fav-button:hover {

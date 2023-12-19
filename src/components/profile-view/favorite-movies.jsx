@@ -1,5 +1,6 @@
 import React from 'react'
 import { Row, Col } from "react-bootstrap";
+import "../movie-card/movie-card.scss";
 import { MovieCard } from '../movie-card/movie-card';
 
 function FavoriteMovies({ favoriteMovieList, toggleFav, user }) {
@@ -12,7 +13,7 @@ function FavoriteMovies({ favoriteMovieList, toggleFav, user }) {
         {
         favoriteMovieList?.length !== 0 ?
         favoriteMovieList?.map((movie) => (
-            <Col xs={12} sm={9} md={6} lg={3} xl={2} className="mx-2 mt-2 mb-5 col-6 similar-movies-img" key={movie._id}>
+            <Col xs={12} s={6} md={3} lg={2} className="mx-2 mt-2 mb-5 col-6 similar-movies-img" key={movie._id}>
                 <MovieCard
                     movie={movie}
                     toggleFav={toggleFav}
