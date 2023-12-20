@@ -13239,28 +13239,53 @@ form {
   color: var(--white-color);
 }
 
+.card-img {
+  display: block;
+}
+
+.card-img .MoviecardImage {
+  object-fit: cover;
+  width: 250px;
+}
+
 #Movie-Card {
+  text-overflow: ellipsis;
+  white-space: nowrap;
   background-color: var(--primary-color);
   color: var(--white-color);
   box-shadow: 3px 3px 5px var(--charcoal-color);
-}
-
-.MovieCard figure {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin: auto;
   position: relative;
   overflow: hidden;
 }
 
-.MovieCard figure img {
+#Movie-Card img {
+  object-fit: content;
   height: 400px;
+}
+
+#MovieCardInfo {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  justify-content: space-between;
+  padding: 1rem;
+  display: flex;
+}
+
+.MovieCardInfo h3, .MovieCardInfo .h3 {
+  color: var(--secondary-color);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.MovieCardInfo h2, .MovieCardInfo .h2 {
+  font-size: 1rem;
+  font-weight: 400;
 }
 
 .fav-button {
   cursor: pointer;
+  align-items: end;
   transition: all .2s linear;
-  position: relative;
 }
 
 .fav-button:hover {
