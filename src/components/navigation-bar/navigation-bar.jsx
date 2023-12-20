@@ -2,6 +2,10 @@ import React from 'react';
 import { Navbar, Container, Nav, Form, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Logo from '../../img/moveflix-logo.svg';
+import "../../index.scss";
+import "./navigation-bar.scss";
+import { useState } from 'react';
+import "bootstrap-icons/font/bootstrap-icons.css"
 
 export const NavigationBar = ({ 
   user, 
@@ -11,10 +15,17 @@ export const NavigationBar = ({
   selectedGenre, 
   setSelectedGenre 
 }) => {
+  const [isSearchBarVisible, setIsSearchBarVisible] = useState(false);
+
+  const toggleSearchBar = () => {
+    setIsSearchBarVisible(!isSearchBarVisible);
+  };
+
   return (
-    <Navbar 
+    <Navbar
     bg="dark" 
     data-bs-theme="dark" 
+    // style={{ backgroundColor: 'var(--richblack-color)', color: 'var(--white-color)' }}
     expand="lg" 
     className='sticky-top mb-5 me-auto d-flex justify-content-evenly'
     >
@@ -59,9 +70,15 @@ export const NavigationBar = ({
           </Col>
           <Col>
             {user && (
-                <Form>
+                <Form className="form-inline d-flex justify-content-center">
+
+                  {/* Add Search Icon */}
+                  <div className='search-icon' onClick={toggleSearchBar}>
+                    <i className='bi bi-search'></i>
+                  </div>
+
                   <Form.Control
-                    className="ms-5 ms-md-3 w-40"
+                    className={`ms-5 ms-md-3 w-40 ${isSearchBarVisible ? 'visible' : 'hidden'}`}
                     type="search"
                     id="searchForm"
                     onChange={(e) => setSearch(e.target.value)}
