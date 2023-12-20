@@ -38,9 +38,13 @@ export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
 
     const data ={
       Username: username,
-      // Password: password,
       Email: email,
     }
+    
+    if (password) {
+      Password: password;
+    }
+     
 
     if (birthday) {
       data.Birthday = new Date(birthday).toISOString().split('T')[0];

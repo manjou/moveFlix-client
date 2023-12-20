@@ -44363,9 +44363,9 @@ const ProfileView = ({ user, movies, setUser, toggleFav })=>{
         const user = JSON.parse(localStorage.getItem("user"));
         const data = {
             Username: username,
-            // Password: password,
             Email: email
         };
+        if (password) Password: password;
         if (birthday) data.Birthday = new Date(birthday).toISOString().split("T")[0];
         fetch(`https://myflix-api-qeb7.onrender.com/users/${user._id}`, {
             method: "PUT",
@@ -44422,7 +44422,7 @@ const ProfileView = ({ user, movies, setUser, toggleFav })=>{
                 setBirthday: setBirthDay
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 96,
+                lineNumber: 100,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _favoriteMoviesDefault.default), {
@@ -44431,13 +44431,13 @@ const ProfileView = ({ user, movies, setUser, toggleFav })=>{
                 user: user
             }, void 0, false, {
                 fileName: "src/components/profile-view/profile-view.jsx",
-                lineNumber: 110,
+                lineNumber: 114,
                 columnNumber: 7
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/profile-view/profile-view.jsx",
-        lineNumber: 95,
+        lineNumber: 99,
         columnNumber: 5
     }, undefined);
 };
