@@ -26,7 +26,7 @@ export const NavigationBar = ({
                 src={Logo}
                 alt="MoveFlix Logo"
                 height="30"
-                className="d-inline-block align-top"
+                className="d-inline-block align-top "
               />
             </Navbar.Brand>
           </Col>

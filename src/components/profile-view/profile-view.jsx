@@ -1,12 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Col, Row, Container } from "react-bootstrap";
-import { Button, Card, Form } from "react-bootstrap";
-import { MovieCard } from "../movie-card/movie-card";
-import { PersonSquare } from "react-bootstrap-icons";
-// import moment from 'moment';
 import axios from "axios";
-import UserInfo from "./user-info";
 import FavoriteMovies from "./favorite-movies";
 import UserForm from "./user-form";
 import "./profile-view.scss";
@@ -40,7 +35,6 @@ export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
     event.preventDefault();
 
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user);
 
     const data ={
       Username: username,
@@ -49,7 +43,7 @@ export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
     }
 
     if (birthday) {
-      data.BirthDay = new Date(birthday).toISOString().split('T')[0]; // Convert birthday in date object
+      data.Birthday = new Date(birthday).toISOString().split('T')[0];
     }
  
     fetch(`https://myflix-api-qeb7.onrender.com/users/${user._id}`, {

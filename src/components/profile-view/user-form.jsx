@@ -66,7 +66,6 @@ export default function UserForm({
                     type="date"
                     value={birthday}
                     onChange={(e) => {
-                      console.log(e.target.value);
                       setBirthday(e.target.value);
                     }}
                   />

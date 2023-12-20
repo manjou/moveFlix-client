@@ -24,7 +24,7 @@ export const MainView = () => {
   const [search, setSearch] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [loading, setLoading] = useState(true); // adding state for loading
+  const [loading, setLoading] = useState(false); // adding state for loading
 
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export const MainView = () => {
     if (!token) {
       return;
     }
-
+    setLoading(true);
     fetch("https://myflix-api-qeb7.onrender.com/movies", {
       headers: { Authorization: `Bearer ${token}`}
     })
@@ -90,7 +90,6 @@ const toggleFav = (id) => {
       console.log(e);
     });
   } else {
-    console.log('Checking if movie is not in favorites');
     if (!user.FavoriteMovies.includes(id)){
       axios.post(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {}, {
       headers: { Authorization: `Bearer ${token}` }
@@ -100,7 +99,6 @@ const toggleFav = (id) => {
       setUser(data);
     })
     .catch(e => {
-      console.log('error adding the movie to favorites')
       console.log(e.response.data);
     });
   }

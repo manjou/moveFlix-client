@@ -13259,6 +13259,7 @@ form {
 }
 
 #Movie-Card img {
+  object-fit: content;
   height: 400px;
 }
 

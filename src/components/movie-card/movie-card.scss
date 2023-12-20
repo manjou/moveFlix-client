@@ -19,6 +19,7 @@
   box-shadow: 3px 3px 5px var(--charcoal-color);
   img {
     height: 400px;
+    object-fit: content;
   }
 }
 
@@ -41,12 +42,6 @@
   font-weight: 400;
 }
 
-
-
-// .MovieCardContainer {
-//   display: flex;
-//   flex-wrap: wrap;
-// }
 
 .fav-button {
   align-items: end;
