@@ -1,12 +1,9 @@
 @import "../../index.scss";
 
-.card-img  {
-  .MoviecardImage {
-    width: 250px;
-    object-fit: cover;
-  }
-  display: block;
-  
+
+.MoviecardImage {
+    object-fit: content;
+    
 }
 
 #Movie-Card {
@@ -17,10 +14,13 @@
   background-color: var(--primary-color);
   color: var(--white-color);
   box-shadow: 3px 3px 5px var(--charcoal-color);
+
   img {
-    height: 400px;
+    height: 350px;
+
   }
 }
+
 
 #MovieCardInfo {
   display: flex;
@@ -30,17 +30,6 @@
   // align-items: center;
   justify-content: space-between;
 }
-
-.MovieCardInfo h3 {
-  margin: 0;
-  font-size: 1rem;
-  color: var(--secondary-color);
-}
-.MovieCardInfo h2 {
-  font-size: 1rem;
-  font-weight: 400;
-}
-
 
 .fav-button {
   align-items: end;
