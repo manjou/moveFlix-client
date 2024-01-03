@@ -46,7 +46,10 @@ export const MainView = () => {
             ImagePath: doc.ImagePath,
             Rating: doc.Rating,
             Director: {
-              Name: doc.Director.Name
+              Name: doc.Director.Name,
+              Bio: doc.Director.Bio,
+              Birth: doc.Director.Birth,
+              Death: doc.Director.Death
             },
             Genre: {
               Name: doc.Genre.Name,

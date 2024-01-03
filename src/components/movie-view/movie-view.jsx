@@ -9,13 +9,14 @@ import PropTypes from "prop-types";
 export const MovieView = ({ movies }) => {
   const { movieId } = useParams();
   const movie = movies.find((movie) => movie._id === movieId);
+  console.log(movie);
   if (!movie) {
     return <div>Loading</div>
   }
   return (
     <div className="row px-10 MovieView">
       <div className="col-md-7">
-        <img src={movie.ImagePath} alt="{movie.Title}" className="MovieViewImage w-100" />
+        <img src={movie.ImagePath} alt={movie.Title} className="MovieViewImage w-100" />
       </div>
       <div className="col-md-5 MovieView">
         <ul className="list-group mb-4">
@@ -33,6 +34,8 @@ export const MovieView = ({ movies }) => {
             <span>{movie.Director.Bio}</span>
             <br /><span>Birth: </span>
             <span>{movie.Director.Birth}</span>
+            {/* <br /><span>Death: </span>
+            <span>{movie.Director.Death}</span> */}
           </li>
           <li className="list-group-item">
             <span>Genre:</span>
@@ -67,7 +70,9 @@ MovieView.propTypes = {
       GenreName: PropTypes.string
     }),
     Director: PropTypes.shape({
-      DirectorName: PropTypes.string
+      DirectorName: PropTypes.string,
+      Bio: PropTypes.string,
+      Birth: PropTypes.string
     }),
     Featured: PropTypes.bool,
   })),
