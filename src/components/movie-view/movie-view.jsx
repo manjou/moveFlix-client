@@ -14,7 +14,7 @@ export const MovieView = ({ movies }) => {
     return <div>Loading</div>
   }
   return (
-    <div className="row px-10 MovieView">
+    <div className="row px-10 py-3 MovieView">
       <div className="col-md-7">
         <img src={movie.ImagePath} alt={movie.Title} className="MovieViewImage w-100" />
       </div>
@@ -30,10 +30,12 @@ export const MovieView = ({ movies }) => {
             <span>Director: </span>
             <br />
             <span>{movie.Director.Name}</span>
-            <br /><span>Bio: </span>
-            <span>{movie.Director.Bio}</span>
             <br /><span>Birth: </span>
             <span>{movie.Director.Birth}</span>
+            <br />
+            <span>Bio: </span>
+            <span>{movie.Director.Bio}</span>
+            
             {/* <br /><span>Death: </span>
             <span>{movie.Director.Death}</span> */}
           </li>

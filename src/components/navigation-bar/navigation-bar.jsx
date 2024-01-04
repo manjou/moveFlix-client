@@ -20,7 +20,7 @@ export const NavigationBar = ({
     >
       <Container>
         <Row>
-          <Col>
+          <Col xs={12} md={2}>
             <Navbar.Brand as={Link} to="/">
               <img
                 src={Logo}
@@ -30,7 +30,7 @@ export const NavigationBar = ({
               />
             </Navbar.Brand>
           </Col>
-          <Col>
+          <Col xs={12} md={3}>
           {user && (
                 <Form className="form-inline d-flex justify-content-center">
                   <Form.Select
@@ -57,7 +57,7 @@ export const NavigationBar = ({
                 </Form>
               )}
           </Col>
-          <Col>
+          <Col xs={12} md={3}>
             {user && (
                 <Form>
                   <Form.Control
@@ -71,7 +71,7 @@ export const NavigationBar = ({
                 </Form>
             )}
           </Col>
-          <Col>
+          <Col xs={12} md={4}>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
