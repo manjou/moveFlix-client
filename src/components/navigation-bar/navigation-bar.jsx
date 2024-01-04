@@ -16,11 +16,11 @@ export const NavigationBar = ({
     bg="dark" 
     data-bs-theme="dark" 
     expand="lg" 
-    className='sticky-top mb-5 me-auto d-flex justify-content-evenly'
+    className='sticky-top mb-4 me-auto d-flex justify-content-evenly'
     >
       <Container>
         <Row>
-          <Col xs={12} md={2}>
+          <Col xs sm md className="mb-2 mb-md-0">
             <Navbar.Brand as={Link} to="/">
               <img
                 src={Logo}
@@ -30,7 +30,7 @@ export const NavigationBar = ({
               />
             </Navbar.Brand>
           </Col>
-          <Col xs={12} md={3}>
+          <Col xs sm md className="mb-1 mb-md-0">
           {user && (
                 <Form className="form-inline d-flex justify-content-center">
                   <Form.Select
@@ -57,7 +57,7 @@ export const NavigationBar = ({
                 </Form>
               )}
           </Col>
-          <Col xs={12} md={3}>
+          <Col xs sm md className="mb-1 mb-md-0">
             {user && (
                 <Form>
                   <Form.Control
@@ -71,10 +71,10 @@ export const NavigationBar = ({
                 </Form>
             )}
           </Col>
-          <Col xs={12} md={4}>
+          <Col xs sm md  className="mb-1 mb-md-0">
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
+              <Nav className="ml-auto">
                 {!user && (
                   <>
                     <Nav.Link as={Link} to="/login">

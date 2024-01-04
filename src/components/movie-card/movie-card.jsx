@@ -10,7 +10,7 @@ import { BookmarkHeart, BookmarkHeartFill } from "react-bootstrap-icons";
 export const MovieCard = ({ movie, toggleFav, addFav, isFavorite }) => {
   return (
   
-      <Card className="h-100" id="Movie-Card">
+      <Card className="w-100" id="Movie-Card">
           <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
             <Card.Img variant="top" src={movie.ImagePath}  alt={`Image of ${movie.Title}`} className="MoviecardImage"/>
           </Link>  
@@ -18,8 +18,8 @@ export const MovieCard = ({ movie, toggleFav, addFav, isFavorite }) => {
 
         <div className="d-flex justify-content-between align-items-start">
           <div>
-            <Card.Title style={{ fontSize: '1em', fontWeight: '300' }} className="mx-3 mt-3">{movie.Title}</Card.Title>
-            <div className="d-flex justify-content-center mt-3 mb-3" style={{backgroundColor: 'var(--secondary-color)', width: '30px', height: '20px'}}>
+            <Card.Title style={{ fontSize: '1em', fontWeight: '300' }} className="mx-1 mt-2">{movie.Title}</Card.Title>
+            <div className="d-flex justify-content-center mt-2 mb-2" style={{backgroundColor: 'var(--secondary-color)', width: '30px', height: '20px'}}>
               <div className="ml-3">
                 <Card.Text style={{ fontSize: '0.8em', fontWeight: '200' }}>{movie.Rating}</Card.Text>
               </div>
@@ -27,9 +27,9 @@ export const MovieCard = ({ movie, toggleFav, addFav, isFavorite }) => {
           </div>
           <div>
             {isFavorite ? (
-              <BookmarkHeartFill size={40} color="var(--secondary-color)" className="fav-button mt-3 me-3" onClick={() => toggleFav(movie._id)}/>
+              <BookmarkHeartFill size={40} color="var(--secondary-color)" className="fav-button mt-2 me-1" onClick={() => toggleFav(movie._id)}/>
               ) : (
-              <BookmarkHeart size={40} color="var(--secondary-color)" className="fav-button mt-3 me-3" onClick={() => toggleFav(movie._id)}/>
+              <BookmarkHeart size={40} color="var(--secondary-color)" className="fav-button mt-2 me-1" onClick={() => toggleFav(movie._id)}/>
             )}
           </div>
         </div>
