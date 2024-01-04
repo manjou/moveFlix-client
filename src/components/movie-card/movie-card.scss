@@ -14,11 +14,12 @@
   background-color: var(--primary-color);
   color: var(--white-color);
   box-shadow: 3px 3px 5px var(--charcoal-color);
-  width: 100%;
+  width: 250px;
 
 
   img {
     height: 350px;
+    object-fit: content;
 
   }
 }

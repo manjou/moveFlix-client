@@ -15,7 +15,7 @@ export const MovieView = ({ movies }) => {
   }
   return (
     <div className="row px-10 py-3 MovieView">
-      <div className="col-md-7">
+      <div className="col-md-7 vh-100">
         <img src={movie.ImagePath} alt={movie.Title} className="MovieViewImage w-100" />
       </div>
       <div className="col-md-5 MovieView">
