@@ -16,12 +16,10 @@ export const NavigationBar = ({
     bg="dark" 
     data-bs-theme="dark" 
     expand="lg" 
-    className='sticky-top mb-4 me-auto d-flex justify-content-evenly'
+    className='sticky-top mb-4 me-auto d-flex justify-content-between'
     >
-      <Container>
-        <Row>
-          <Col xs sm md className="mb-2 mb-md-0">
-            <Navbar.Brand as={Link} to="/">
+      <div className="d-flex justify-content-between w-100">
+            <Navbar.Brand as={Link} to="/" className="ms-3">
               <img
                 src={Logo}
                 alt="MoveFlix Logo"
@@ -29,12 +27,11 @@ export const NavigationBar = ({
                 className="d-inline-block align-top"
               />
             </Navbar.Brand>
-          </Col>
-          <Col xs sm md className="mb-1 mb-md-0">
+
           {user && (
-                <Form className="form-inline d-flex justify-content-center">
+                <Form className="d-flex justify-content-center">
                   <Form.Select
-                    className="me-1 mx-md-0 w-20" 
+                    className="me-3 w-50" 
                     aria-label="Default select genre"
                     value={selectedGenre}
                     onChange={(e) => setSelectedGenre(e.target.value)}
@@ -56,12 +53,11 @@ export const NavigationBar = ({
                   </Form.Select>
                 </Form>
               )}
-          </Col>
-          <Col xs sm md className="mb-1 mb-md-0">
+
             {user && (
-                <Form>
+                <Form className="movieSearch">
                   <Form.Control
-                    className="ms-5 ms-md-3 w-40"
+                    className="me-3 w-50"
                     type="search"
                     id="searchForm"
                     onChange={(e) => setSearch(e.target.value)}
@@ -70,11 +66,10 @@ export const NavigationBar = ({
                   />  
                 </Form>
             )}
-          </Col>
-          <Col xs sm md  className="mb-1 mb-md-0">
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+            <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ marginRight: '15px' }} />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="ml-auto">
+              <Nav>
                 {!user && (
                   <>
                     <Nav.Link as={Link} to="/login">
@@ -98,9 +93,7 @@ export const NavigationBar = ({
                 )}
               </Nav>
             </Navbar.Collapse>
-          </Col>
-        </Row>       
-      </Container>
+        </div>
     </Navbar>
   );
 };
