@@ -1,3 +1,7 @@
 .CardText span {
   font-weight: 200;
 }
+
+form-control.input-field:valid {
+  background-color: var(--primary-color); // Replace 'green' with the color you want
+}

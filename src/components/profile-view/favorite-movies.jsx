@@ -13,7 +13,7 @@ function FavoriteMovies({ favoriteMovieList, toggleFav, user }) {
         {
         favoriteMovieList?.length !== 0 ?
         favoriteMovieList?.map((movie) => (
-            <Col xs={12} s={6} md={3} lg={2} className="mx-2 mt-2 mb-5 col-6 similar-movies-img" key={movie._id}>
+            <Col  xs={12} sm={6} md={4} lg={3} xl={2} className="mx-1 mt-2 mb-2" key={movie._id}>
                 <MovieCard
                     movie={movie}
                     toggleFav={toggleFav}
