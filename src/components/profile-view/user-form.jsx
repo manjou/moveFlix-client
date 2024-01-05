@@ -18,7 +18,7 @@ export default function UserForm({
 }) {
   return (
     <Row>
-      <Col md={4} className="text-center text-md-start ms-3">
+      <Col md={4} className="text-center text-md-start ms-3 mt-2">
           <Card>
               <Card.Body>
                   <Card.Title>My Profile</Card.Title>
@@ -29,12 +29,12 @@ export default function UserForm({
               </Card.Body>
           </Card>
       </Col>
-      <Col md={7} className="mt-5">
+      <Col md={7} className="mt-2">
           <Form onSubmit={handleUpdate}>
               <Form.Group controlId="formUsername">
                   <Form.Label>Name:</Form.Label>
                   <Form.Control
-                  className="mb-3"
+                  className="mb-3 input-field"
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
@@ -44,7 +44,7 @@ export default function UserForm({
               <Form.Group controlId="formPassword">
                 <Form.Label>Password:</Form.Label>
                 <Form.Control
-                  className="mb-3"
+                  className="mb-3 input-field"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -53,7 +53,7 @@ export default function UserForm({
               <Form.Group controlId="formEmail">
                   <Form.Label>Email:</Form.Label>
                   <Form.Control
-                  className="mb-3"
+                  className="mb-3 input-field"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -62,7 +62,7 @@ export default function UserForm({
               <Form.Group controlId="formBirthday">
                   <Form.Label>Birthday:</Form.Label>
                   <Form.Control
-                    className="mb-2"
+                    className="mb-2 input-field"
                     type="date"
                     value={birthday}
                     onChange={(e) => {
