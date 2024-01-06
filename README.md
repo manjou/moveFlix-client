@@ -49,11 +49,14 @@ The application includes the following features:
 
 ## Live Version
 
-The live version of the moveFlix app can be accessed [here](#) (replace '#' with the actual link to your deployed app).
+The live version of the moveFlix app can be accessed [here](https://moveflix.onrender.com).
 
 ## Screenshots
 
-[Add screenshots of your app here]
+![moveFlix Main-View](screenshots/Screenshot_Main-View.png)
+![moveFlix Movie-View](screenshots/Screenshot_Movie-View.png)
+![moveFlix Profile-View](screenshots/Screenshot_Profile-View.png)
+![moveFlix Signup-View](screenshots/Screenshot_Signup-View.png)
 
 ## Running the Project
 
