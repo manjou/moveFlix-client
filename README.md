@@ -11,7 +11,7 @@
 7. [Screenshots of the moveFlix App](#Screenshots)
 8. [Running the Project](#Running-the-Project)
 9. [References](#References)
-10. [Acknowledgements](Acknowldedgements)
+10. [Acknowledgements](#Acknowldedgements)
 
 ## Introduction
 
@@ -49,7 +49,7 @@ The application includes the following features:
 
 ## Live Version
 
-The live version of the moveFlix app can be accessed [here](https://moveflix.onrender.com).
+I deployed my moveFlix Web App on render. The live version can be accessed [https://moveflix.onrender.com](https://moveflix.onrender.com).
 
 ## Screenshots
 
