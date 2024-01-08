@@ -19,12 +19,20 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken? storedToken: null);
   // const [user, setUser] = useState(localStorage.getItem("user"));
   // const [token, setToken] = useState(localStorage.getItem("token"));  
-
+  const [localStorageUser, setLocalStorageUser] = useState(storedUser);
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [loading, setLoading] = useState(false); // adding state for loading
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (storedUser) {
+      setUser(storedUser);
+      setLocalStorageUser(storedUser);
+    }
+  }, [localStorageUser]);
 
 
   useEffect(() => {
