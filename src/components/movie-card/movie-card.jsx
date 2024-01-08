@@ -1,15 +1,18 @@
 import "./movie-card.scss";
-import React from "react";
+import React, { useContext } from "react";
 // Here you import the PropTypes library
 import PropTypes from "prop-types";
+import { UserContext } from "../main-view/main-view";
 
 import { Button, Card, CardBody, CardImg } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BookmarkHeart, BookmarkHeartFill } from "react-bootstrap-icons";
 
+
 export const MovieCard = ({ movie, toggleFav, addFav, isFavorite }) => {
+  const { user, setUser } = useContext(UserContext);
+
   return (
-  
       <Card className="w-100" id="Movie-Card">
           <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
             <Card.Img variant="top" src={movie.ImagePath}  alt={`Image of ${movie.Title}`} className="MoviecardImage"/>

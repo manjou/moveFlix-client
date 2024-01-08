@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Col, Row, Container } from "react-bootstrap";
 import { Button, Card, Form } from "react-bootstrap";
@@ -6,26 +6,39 @@ import { MovieCard } from "../movie-card/movie-card";
 import { PersonSquare } from "react-bootstrap-icons";
 import FavoriteMovies from "./favorite-movies";
 import UserForm from "./user-form";
+import { UserContext } from "../main-view/main-view";
 import "./profile-view.scss";
 
 
-export const ProfileView = ({ user, movies, setUser, toggleFav }) => {
+export const ProfileView = ({ movies, toggleFav }) => {
+  const { user, setUser } = useContext(UserContext);
+  // const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [username, setUsername] = useState(user.Username);
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthDay] = useState(user.BirthDay ? new Date(user.BirthDay).toISOString().split('T')[0] : '');
   const [password, setPassword] = useState(''); // initial value can be empty or user's current password
   const [userInfo, setUserInfo] = useState(user);
+  const [favoriteMovieList, setFavoriteMovieList] = useState([]);
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
+  };
+
+
+  useEffect(() => {
+    setFavoriteMovieList(movies.filter(m => user.FavoriteMovies.includes(m._id)));
+  }, [user, movies]);
 
   useEffect(() => {
     setUserInfo(user);
   }, [user]);
 
+  useEffect(() => {
+    setFavoriteMovieList(movies.filter(m => user.FavoriteMovies.includes(m._id)));
+  }, [user.FavoriteMovies]);
+
 
   // Navigate
   const navigate = useNavigate();
-
-  // Return list of favorite movies
-  const favoriteMovieList = movies.filter(m => user.FavoriteMovies.includes(m._id));
 
   // get Token
   const token = localStorage.getItem('token');

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Spinner } from "react-bootstrap";
 import axios from 'axios';
 import { MovieCard } from "../movie-card/movie-card";
@@ -11,6 +11,7 @@ import "./main-view.scss";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
+export const UserContext = React.createContext();
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -25,6 +26,10 @@ export const MainView = () => {
   const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [loading, setLoading] = useState(false); // adding state for loading
+  
+
+  
+
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -77,9 +82,11 @@ export const MainView = () => {
   // let similarMovies = selectedMovie ? movies.filter(movie => movie.Genre.Name === selectedMovie.Genre.Name) : [];
 
 
+
   // Toggle Favorite Movie
 const toggleFav = (id) => {
   const userId = user._id;
+
 
   //check if the movie ID exists in the movies state
   const movieExists = movies.some(movie => movie._id === id);
@@ -159,6 +166,9 @@ const removeFav = (id) => {
 
 // Routes Definition
   return (
+    <UserContext.Provider value={{ user, setUser, toggleFav }}>
+    
+
     <BrowserRouter>
     <NavigationBar 
       user={user}
@@ -283,6 +293,7 @@ const removeFav = (id) => {
         </Routes>
       </Row>
     </BrowserRouter>
+    </UserContext.Provider>
   );
 };
     
