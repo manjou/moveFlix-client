@@ -1,16 +1,58 @@
 import "./movie-card.scss";
-import React, { useContext } from "react";
-// Here you import the PropTypes library
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { UserContext } from "../main-view/main-view";
-
 import { Button, Card, CardBody, CardImg } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BookmarkHeart, BookmarkHeartFill } from "react-bootstrap-icons";
 
 
-export const MovieCard = ({ movie, toggleFav, addFav, isFavorite }) => {
-  const { user, setUser } = useContext(UserContext);
+export const MovieCard = ({ movie, isFavorite, user, setUser, movies }) => {
+  const token = localStorage.getItem('token');
+  const { user, setUser } = useState(g);
+
+    // Toggle Favorite Movie
+const toggleFav = (id) => {
+  const userId = user._id;
+  console.log(toggleFav);
+
+  //check if the movie ID exists in the movies state
+  const movieExists = movies.some(movie => movie._id === id);
+  console.log('movieExists',movieExists);
+  if (!movieExists) {
+    return;
+  }
+  console.log('fav includes',user.FavoriteMovies.includes(id));
+  if (user.FavoriteMovies.includes(id)) {
+
+    axios.delete(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then(response => {
+      const data = response.data;
+      console.log('movie remobved', data);
+      setUser(data);
+    })
+    .catch(e => {
+      console.error('error removing the movie from favorites', e);
+    });
+  } else {
+    if (!user.FavoriteMovies.includes(id)){
+      axios.post(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {}, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then(response => {
+      const data = response.data;
+      console.log('movie added', data);
+      setUser(data);
+    })
+    .catch(e => {
+      console.error('error adding the movie to favorites', e);
+    });
+  }
+    }
+
+};
+
 
   return (
       <Card className="w-100" id="Movie-Card">
@@ -46,8 +88,10 @@ MovieCard.propTypes = {
     _id: PropTypes.string,
     title: PropTypes.string
   }).isRequired,
-  toggleFav: PropTypes.func.isRequired,
-  isFavorite: PropTypes.bool.isRequired
+  isFavorite: PropTypes.bool.isRequired,
+  user: PropTypes.func.isRequired,
+  setUser: PropTypes.func.isRequired,
+  movies: PropTypes.array.isRequired
 };
 
 MovieCard.defaultProps = {

@@ -1,18 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Col, Row, Container } from "react-bootstrap";
-import { Button, Card, Form } from "react-bootstrap";
-import { MovieCard } from "../movie-card/movie-card";
-import { PersonSquare } from "react-bootstrap-icons";
+import { Container } from "react-bootstrap";
 import FavoriteMovies from "./favorite-movies";
 import UserForm from "./user-form";
-import { UserContext } from "../main-view/main-view";
 import "./profile-view.scss";
 
 
-export const ProfileView = ({ movies, toggleFav }) => {
-  const { user, setUser } = useContext(UserContext);
-  // const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+export const ProfileView = ({ movies }) => {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [username, setUsername] = useState(user.Username);
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthDay] = useState(user.BirthDay ? new Date(user.BirthDay).toISOString().split('T')[0] : '');
@@ -32,9 +27,6 @@ export const ProfileView = ({ movies, toggleFav }) => {
     setUserInfo(user);
   }, [user]);
 
-  useEffect(() => {
-    setFavoriteMovieList(movies.filter(m => user.FavoriteMovies.includes(m._id)));
-  }, [user.FavoriteMovies]);
 
 
   // Navigate
@@ -123,7 +115,7 @@ export const ProfileView = ({ movies, toggleFav }) => {
         setBirthday={setBirthDay} 
       />
 
-      <FavoriteMovies favoriteMovieList={favoriteMovieList } toggleFav={toggleFav} user={user} />
+      <FavoriteMovies favoriteMovieList={favoriteMovieList } user={user} />
 
     </Container>
   );

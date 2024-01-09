@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Spinner } from "react-bootstrap";
 import axios from 'axios';
 import { MovieCard } from "../movie-card/movie-card";
@@ -11,7 +11,7 @@ import "./main-view.scss";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-export const UserContext = React.createContext();
+// export const UserContext = React.createContext();
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -83,90 +83,9 @@ export const MainView = () => {
 
 
 
-  // Toggle Favorite Movie
-const toggleFav = (id) => {
-  const userId = user._id;
-
-
-  //check if the movie ID exists in the movies state
-  const movieExists = movies.some(movie => movie._id === id);
-  if (!movieExists) {
-    return;
-  }
-  if (user.FavoriteMovies.includes(id)) {
-
-    axios.delete(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-    .then(response => {
-      const data = response.data;
-      setUser(data);
-    })
-    .catch(e => {
-      console.log('error removing the movie from favorites')
-      console.log(e);
-    });
-  } else {
-    if (!user.FavoriteMovies.includes(id)){
-      axios.post(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {}, {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-    .then(response => {
-      const data = response.data;
-      setUser(data);
-    })
-    .catch(e => {
-      console.log('error adding the movie to favorites')
-      console.log(e.response.data);
-    });
-  }
-    }
-
-};
-
-// Add Favorite Movie
-const addFav = (id) => {
-  axios.post(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {}, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  })
-  .then(response => {
-    const user = response.data;
-    localStorage.setItem('user', JSON.stringify(user));
-    setUser(user);
-  })
-  .catch(error => {
-    console.error('Error: ', error.response.data);
-    alert("Failed to add");
-  });
-};
-
-
-
-
-// Remove Favorite Movie
-
-const removeFav = (id) => {
-  axios.delete(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {
-    headers: {
-      Authorization: `Bearer ${token}`
-    }
-  })
-  .then(response => {
-    const user = response.data;
-    localStorage.setItem('user', JSON.stringify(user));
-    setUser(user);
-  })
-  .catch(error => {
-    console.error('Error: ', error)
-  });
-};
-
-
 // Routes Definition
   return (
-    <UserContext.Provider value={{ user, setUser, toggleFav }}>
+    // <UserContext.Provider value={{ user, setUser, toggleFav }}>
     
 
     <BrowserRouter>
@@ -227,8 +146,6 @@ const removeFav = (id) => {
                   <Col md={12}>
                     <MovieView
                       movies={movies}
-                      addFav={addFav}
-                      removeFav={removeFav} 
                     />
                   </Col>
                 )
@@ -259,11 +176,11 @@ const removeFav = (id) => {
                       : movie.Title.toLowerCase().includes(search.toLowerCase());
                     })
                     .map((movie, movieId) => (
-                      <Col className="mb-2" key={movie.id}  xs={12} sm={6} md={4} lg={3} xl={2}>
+                      <Col className="mb-2" key={movie._id}  xs={12} sm={6} md={4} lg={3} xl={2}>
                       {/* <Col className="mb-2 col-8" key={movie.id} md sm xs lg xl> */}
                         <MovieCard 
+                          key={movie._id}
                           movie={movie}
-                          toggleFav={toggleFav}
                           isFavorite={user && user.FavoriteMovies ? user.FavoriteMovies.includes(movie._id) : false}
                         />
                       </Col>
@@ -281,9 +198,6 @@ const removeFav = (id) => {
                       <ProfileView
                         user={user}
                         movies={movies}
-                        toggleFav={toggleFav}
-                        removeFav={removeFav}
-                        addFav={addFav}
                         setUser={setUser}
                       />
                     </Col>
@@ -293,7 +207,7 @@ const removeFav = (id) => {
         </Routes>
       </Row>
     </BrowserRouter>
-    </UserContext.Provider>
+    // </UserContext.Provider>
   );
 };
     
