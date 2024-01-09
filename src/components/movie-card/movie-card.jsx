@@ -4,14 +4,18 @@ import PropTypes from "prop-types";
 import { Button, Card, CardBody, CardImg } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BookmarkHeart, BookmarkHeartFill } from "react-bootstrap-icons";
-
+import axios from 'axios';
 
 export const MovieCard = ({ movie, isFavorite, user, setUser, movies }) => {
   const token = localStorage.getItem('token');
-  const { user, setUser } = useState(g);
+  
 
     // Toggle Favorite Movie
 const toggleFav = (id) => {
+  if (!user) {
+    console.log('User is not defined');
+    return;
+  }
   const userId = user._id;
   console.log(toggleFav);
 
@@ -89,9 +93,8 @@ MovieCard.propTypes = {
     title: PropTypes.string
   }).isRequired,
   isFavorite: PropTypes.bool.isRequired,
-  user: PropTypes.func.isRequired,
-  setUser: PropTypes.func.isRequired,
-  movies: PropTypes.array.isRequired
+  user: PropTypes.object.isRequired,
+  setUser: PropTypes.func.isRequired
 };
 
 MovieCard.defaultProps = {

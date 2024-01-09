@@ -49,7 +49,7 @@ export const ProfileView = ({ movies }) => {
     }
 
     if (password) {
-      Password: password;
+      data.Password = password;
     }
 
     if (birthday) {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Spinner } from "react-bootstrap";
+import { Route } from 'react-router-dom';
 import axios from 'axios';
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -8,37 +9,24 @@ import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
 import { ProfileView } from "../profile-view/profile-view";
 import "./main-view.scss";
-import { Row, Col, Form, Button } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
-// export const UserContext = React.createContext();
 
 export const MainView = () => {
   const storedUser = JSON.parse(localStorage.getItem("user"));
+  console.log('storedUser:', storedUser);
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(storedUser? storedUser: null);
   const [token, setToken] = useState(storedToken? storedToken: null);
   // const [user, setUser] = useState(localStorage.getItem("user"));
   // const [token, setToken] = useState(localStorage.getItem("token"));  
-  const [localStorageUser, setLocalStorageUser] = useState(storedUser);
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState("");
   const [selectedGenre, setSelectedGenre] = useState("");
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [loading, setLoading] = useState(false); // adding state for loading
   
-
-  
-
-
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser) {
-      setUser(storedUser);
-      setLocalStorageUser(storedUser);
-    }
-  }, [localStorageUser]);
-
 
   useEffect(() => {
     
@@ -85,8 +73,6 @@ export const MainView = () => {
 
 // Routes Definition
   return (
-    // <UserContext.Provider value={{ user, setUser, toggleFav }}>
-    
 
     <BrowserRouter>
     <NavigationBar 
@@ -175,18 +161,21 @@ export const MainView = () => {
                       ? movie
                       : movie.Title.toLowerCase().includes(search.toLowerCase());
                     })
-                    .map((movie, movieId) => (
+                    .map((movie, movieId) => {
+                      console.log(movie);
+                      return (
                       <Col className="mb-2" key={movie._id}  xs={12} sm={6} md={4} lg={3} xl={2}>
-                      {/* <Col className="mb-2 col-8" key={movie.id} md sm xs lg xl> */}
                         <MovieCard 
-                          key={movie._id}
+                          user={user}
+                          setUser={setUser}
                           movie={movie}
+                          movies={movies}
                           isFavorite={user && user.FavoriteMovies ? user.FavoriteMovies.includes(movie._id) : false}
                         />
                       </Col>
-                    ))
-                )
-            }
+                    );
+                })
+            )}
           />
           {/* Return ProfileView if logged in, otherwise LoginView */}
           <Route
@@ -207,171 +196,8 @@ export const MainView = () => {
         </Routes>
       </Row>
     </BrowserRouter>
-    // </UserContext.Provider>
+
   );
 };
     
-    
-
-    // old code before routing.  left it to check for similar movies to be implementing
-  //     {!user ? (
-  //       <Col md={5}>
-  //         <LoginView onLoggedIn={(user) => {
-  //            setUser(user);
-  //            setToken(localStorage.getItem('token'));
-  //         }} />
-  //         or
-  //         <SignupView />
-  //       </Col>
-  //     ) : selectedMovie ? (
-  //       <>
-  //       <Col md={2}>
-  //         <Button
-  //           onClick={() => {
-  //             setUser(null);
-  //             setToken(null);
-  //             localStorage.clear();
-  //           }}
-  //           variant="dark"
-  //         >
-  //           Logout
-  //         </Button>
-  //       </Col>
-       
-  //       <Col md={8}>
-  //        <MovieView
-  //           movie={selectedMovie} 
-  //           onBackClick={() => setSelectedMovie(null)} 
-  //         />
-  //       </Col>
-        
-  //       <h2><hr></hr></h2>
-        
-  //       <h2>Similar Movies</h2>
-  //         <>   
-  //           {similarMovies.map((movie) => (
-  //             <Col className="mb-4" key={movie._id} md={3}>
-  //               <MovieCard
-  //                 movie={movie}
-  //                 onMovieClick={(newSelectedMovie) => {
-  //                   setSelectedMovie(newSelectedMovie);
-  //                   }}  
-  //               />
-  //             </Col>
-  //           ))}
-  //         </>
-  //       </>
-  //     ) : movies.length === 0 ? (
-  //       <div>The list is empty!</div>
-  //     ) : (
-  //       <>
-  //         {movies.map((movie) => (
-  //           <Col className="mb-4" key={movie._id} md={4} xs={6}>
-  //             <MovieCard
-  //               movie={movie}
-  //               onMovieClick={(newSelectedMovie) => {
-  //               setSelectedMovie(newSelectedMovie);
-  //               }}
-  //             />
-  //           </Col>
-  //         ))}
-  //       </>
-  //     )}
-  //   </Row>
-  // );
-  // }
-
-
-
-
-
-
-  // if (!user) {
-  //   return (
-  //     <>
-  //       <LoginView onLoggedIn={(user, token) => {
-  //       setUser(user);
-  //       setToken(token);
-  //       }}
-  //       />
-  //       or
-  //       <SignupView />
-  //     </>
-  //   );
-  // }
-
-
-
-  // if (selectedMovie) {
-  //   let similarMovies = movies.filter(movie => movie.Genre.Name === selectedMovie.Genre.Name);
-  //   return (
-  //     <>
-  //       <button
-  //         onClick={() => {
-  //           setUser(null);
-  //           setToken(null);
-  //           localStorage.clear();
-  //         }}
-  //       >
-  //         Logout
-  //       </button>
-  //       <MovieView movie={selectedMovie} onBackClick={() => setSelectedMovie(null)} />
-  //       <hr />
-  //       <h2>Similar Movies</h2>
-  //       <div className="MovieCardContainer">
-  //         {similarMovies.map((movie) => {
-  //           return (
-  //             <MovieCard
-  //               key={movie._id}
-  //               movie={movie}
-  //               onMovieClick={(newSelectedMovie) => {
-  //                 setSelectedMovie(newSelectedMovie);
-  //               }}  
-  //             />   
-  //           );
-  //         })}
-  //       </div>
-    
-  //     </>
-  //   );
-  // }
-
-  // if (movies.length === 0) {
-  //   return (
-  //     <>
-  //       <button 
-  //         onClick={() => {
-  //           setUser(null);
-  //           setToken(null);
-  //           localStorage.clear();
-  //         }}
-  //       >
-  //         Logout
-  //       </button>
-  //       <div>The list is empty!</div>;
-  //     </>
-  //   )
-  // }
-
-  // return (
-    
-  //   <div className="MovieCardContainer">
-  //     <button
-  //       onClick={() => {
-  //         setUser(null);
-  //         setToken(null);
-  //         localStorage.clear();
-  //       }}
-  //     >
-  //       Logout
-  //     </button>
-  //     {movies.map((movie) => (
-  //       <MovieCard
-  //         key={movie._id}
-  //         movie={movie}
-  //         onMovieClick={(newSelectedMovie) => {
-  //           setSelectedMovie(newSelectedMovie);
-  //         }}
-  //       />
-  //     ))}
-  //   </div>
+  

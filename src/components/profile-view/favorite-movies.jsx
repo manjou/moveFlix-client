@@ -3,7 +3,7 @@ import { Row, Col } from "react-bootstrap";
 import "../movie-card/movie-card.scss";
 import { MovieCard } from '../movie-card/movie-card';
 
-function FavoriteMovies({ favoriteMovieList, toggleFav, user }) {
+function FavoriteMovies({ favoriteMovieList, toggleFav, user, setUser, movies }) {
   const [favorites, setFavorites] = useState(favoriteMovieList);
 
   useEffect(() => {
@@ -20,8 +20,10 @@ function FavoriteMovies({ favoriteMovieList, toggleFav, user }) {
         favorites?.map((movie) => (
             <Col  xs={12} sm={6} md={4} lg={3} xl={2} className="mx-1 mt-2 mb-2" key={movie._id}>
                 <MovieCard
+                    user={user}
+                    setUser={setUser}
                     movie={movie}
-                    toggleFav={toggleFav}
+                    movies={movies}
                     isFavorite={user.FavoriteMovies.includes(movie._id)}
                 />
             </Col>
