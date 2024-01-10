@@ -6,22 +6,28 @@ import UserForm from "./user-form";
 import "./profile-view.scss";
 
 
-export const ProfileView = ({ movies, user: newUser, setUser: updateUser }) => {
-  const [user, setUser] = useState(newUser ? newUser : JSON.parse(localStorage.getItem('user')));
+export const ProfileView = ({ movies }) => {
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [username, setUsername] = useState(user.Username);
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthDay] = useState(user.BirthDay ? new Date(user.BirthDay).toISOString().split('T')[0] : '');
   const [password, setPassword] = useState(''); // initial value can be empty or user's current password
   const [userInfo, setUserInfo] = useState(user);
   const [favoriteMovieList, setFavoriteMovieList] = useState([]);
+  const updateUser = (updatedUser) => {
+    setUser(updatedUser);
+  };
+
 
   useEffect(() => {
     setFavoriteMovieList(movies.filter(m => user.FavoriteMovies.includes(m._id)));
-  }, [user.FavoriteMovies, movies]);
+  }, [user, movies]);
 
   useEffect(() => {
     setUserInfo(user);
   }, [user]);
+
+
 
   // Navigate
   const navigate = useNavigate();
@@ -92,10 +98,6 @@ export const ProfileView = ({ movies, user: newUser, setUser: updateUser }) => {
     })
   }
 
-  const handleUpdateUser = (user) => {
-    updateUser(user);
-    setUser(user)
-  }
 
   return (
     <Container className="my5"> 
@@ -113,7 +115,7 @@ export const ProfileView = ({ movies, user: newUser, setUser: updateUser }) => {
         setBirthday={setBirthDay} 
       />
 
-      <FavoriteMovies favoriteMovieList={favoriteMovieList } user={user} movies={movies} setUser={handleUpdateUser} />
+      <FavoriteMovies favoriteMovieList={favoriteMovieList } user={user} />
 
     </Container>
   );

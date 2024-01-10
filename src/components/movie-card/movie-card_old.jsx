@@ -1,53 +1,69 @@
-import React from "react";
+import "./movie-card.scss";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Card} from "react-bootstrap";
+import { Button, Card, CardBody, CardImg } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { BookmarkHeart, BookmarkHeartFill } from "react-bootstrap-icons";
 import axios from 'axios';
 
-import "./movie-card.scss";
-
-export const MovieCard = ({ movie, isFavorite, user, setUser }) => {
+export const MovieCard = ({ movie, isFavorite, user, setUser, movies }) => {
   const token = localStorage.getItem('token');
+  
 
-  const toggleFav = (id) => {
-    if (!user) {
-      console.log('User is not defined');
-      return;
+    // Toggle Favorite Movie
+const toggleFav = (id) => {
+  if (!user) {
+    console.log('User is not defined');
+    return;
+  }
+  const userId = user._id;
+  console.log(toggleFav);
+
+  //check if the movie ID exists in the movies state
+  const movieExists = movies.some(movie => movie._id === id);
+  console.log('movieExists',movieExists);
+  if (!movieExists) {
+    return;
+  }
+  console.log('fav includes',user.FavoriteMovies.includes(id));
+  if (user.FavoriteMovies.includes(id)) {
+
+    axios.delete(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then(response => {
+      const data = response.data;
+      console.log('movie remobved', data);
+      setUser(data);
+    })
+    .catch(e => {
+      console.error('error removing the movie from favorites', e);
+    });
+  } else {
+    if (!user.FavoriteMovies.includes(id)){
+      axios.post(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {}, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then(response => {
+      const data = response.data;
+      console.log('movie added', data);
+      setUser(data);
+    })
+    .catch(e => {
+      console.error('error adding the movie to favorites', e);
+    });
+  }
     }
 
-    if (user.FavoriteMovies.includes(id)) {
-      axios.delete(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then(response => {
-        const data = response.data;
-        localStorage.setItem('user', JSON.stringify(data));
-        setUser(data);
-      })
-      .catch(e => {
-        console.error('error removing the movie from favorites', e);
-      });
-    } else {
-        axios.post(`https://myflix-api-qeb7.onrender.com/users/${user._id}/movies/${id}`, {}, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then(response => {
-        const data = response.data;
-        localStorage.setItem('user', JSON.stringify(data));
-        setUser(data);
-      })
-      .catch(e => {
-        console.error('error adding the movie to favorites', e);
-      });
-    }
-  };
+};
+
 
   return (
       <Card className="w-100" id="Movie-Card">
           <Link to={`/movies/${encodeURIComponent(movie._id)}`}>
             <Card.Img variant="top" src={movie.ImagePath}  alt={`Image of ${movie.Title}`} className="MoviecardImage"/>
           </Link>  
+        
 
         <div className="d-flex justify-content-between align-items-start">
           <div>
