@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
-import FavoriteMovies from "./favorite-movies_old";
+import FavoriteMovies from "./favorite-movies";
 import UserForm from "./user-form";
 import "./profile-view.scss";
 

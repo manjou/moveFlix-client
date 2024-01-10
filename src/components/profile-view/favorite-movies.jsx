@@ -1,7 +1,7 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import "../movie-card/movie-card.scss";
-import { MovieCard } from "../movie-card/movie-card_old";
+import { MovieCard } from "../movie-card/movie-card";
 
 function FavoriteMovies({ favoriteMovieList, user, setUser }) {
   return (
